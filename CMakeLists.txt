@@ -35,7 +35,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(matriz-de-leds matriz-de-leds.c  libs/buzzer.c libs/leds.c libs/keyboard.c)
+add_executable(matriz-de-leds matriz-de-leds.c  libs/buzzer.c libs/leds.c libs/keyboard.c libs/animations.c)
 
 pico_set_program_name(matriz-de-leds "matriz-de-leds")
 pico_set_program_version(matriz-de-leds "0.1")
@@ -52,11 +52,7 @@ target_link_libraries(matriz-de-leds
         pico_stdlib
         hardware_adc
         hardware_pwm)
-
-# Add the standard library to the build
-target_link_libraries(matriz-de-leds
-        pico_stdlib)
-
+        
 # Add the standard include files to the build
 target_include_directories(matriz-de-leds PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}

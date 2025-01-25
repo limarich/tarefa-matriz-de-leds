@@ -44,6 +44,8 @@
         "leds.h": "c",
         "pio_matrix.pio.h": "c",
         "stdlib.h": "c",
-        "pio.h": "c"
+        "pio.h": "c",
+        "animations.h": "c",
+        "math.h": "c"
     }
 }
