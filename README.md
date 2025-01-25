@@ -155,5 +155,3 @@ bool is_key_pressed(char key);
 
 ---
 
-Se precisar de mais detalhes ou tiver dúvidas sobre a utilização das bibliotecas, fique à vontade para entrar em contato!
-
