@@ -1,4 +1,4 @@
-# Documentação das Bibliotecas de LEDs, Buzzer e Teclados Matriciais
+# Documentação das Bibliotecas de LEDs, Buzzer, Teclados Matriciais e Animações 
 
 ## Biblioteca de LEDs
 A biblioteca de LEDs foi projetada para controlar uma matriz de LEDs utilizando o protocolo WS2812B. Com a finalidade de abstrair o código e facilitar a legibilidade, esta biblioteca ainda fornece o tipo `frame` que representa uma matriz de 25 pixels contendo, cada um, um valor de red, green e blue.
@@ -155,3 +155,47 @@ bool is_key_pressed(char key);
 
 ---
 
+Aqui está a documentação para o arquivo `animations.h`:
+
+---
+
+# **`animations.h`** - Biblioteca para Animações de LEDs com Buzzer
+
+Esta biblioteca contém funções para controlar animações de LEDs utilizando o hardware do Raspberry Pi Pico e gerar efeitos sonoros utilizando um buzzer. O principal objetivo é permitir a criação de animações simples, como o sorriso com LEDs e buzzer, para interação com o usuário.
+
+## **Inclusões**
+
+```c
+#include "libs/leds.h"    // Biblioteca para controle de LEDs
+#include "libs/buzzer.h"  // Biblioteca para controle do buzzer
+```
+
+Essas bibliotecas são responsáveis pelo controle do hardware de LEDs e buzzer, permitindo o gerenciamento das animações e efeitos sonoros.
+
+## **Constantes de Cores**
+
+No arquivo `animations.h`, várias cores de LEDs podem ser definidas para personalizar as animações. As cores são representadas como estruturas do tipo `pixel`, que possuem valores de componentes RGB.
+
+exemplos: 
+- `black`: Preto (0, 0, 0)
+- `white`: Branco (213, 210, 210)
+- `green`: Verde (32, 216, 26)
+
+Essas cores podem ser usadas nas animações para ajustar o padrão de iluminação dos LEDs.
+
+## **Funções**
+
+### **`draw_smile(PIO pio, uint sm, float intensity)`**
+
+Esta função desenha uma animação de sorriso usando LEDs e gera um efeito sonoro utilizando o buzzer. A função controla tanto a iluminação dos LEDs quanto a ativação do buzzer de acordo com a intensidade fornecida.
+
+#### **Parâmetros**:
+
+- **`pio` (PIO):** PIO.
+- **`sm` (uint):** número da state machine.
+- **`intensity` (float):** A intensidade da animação, onde 0 representa a ausência de animação e 1 representa o máximo de intensidade. Este valor pode ser usado para controlar a dinâmica da animação e a duração do som gerado pelo buzzer.
+
+#### **Descrição**:
+Esta função cria a animação de um sorriso utilizando os LEDs. Além de controlar a aparência visual dos LEDs (que pode simular um sorriso), a função também ativa o buzzer para gerar um efeito sonoro correspondente à animação.
+
+---
