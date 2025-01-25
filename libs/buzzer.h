@@ -1,6 +1,9 @@
 #ifndef BUZZER_H
 #define BUZZER_H
 
+#define BUZZER_A 10
+#define BUZZER_B 21
+
 #include <stdint.h>
 #include <stddef.h>
 #include "pico/stdlib.h"
