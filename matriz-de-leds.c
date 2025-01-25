@@ -45,7 +45,6 @@ int main()
     // configurações da PIO
     uint offset = pio_add_program(pio, &pio_matrix_program);
     uint sm = pio_claim_unused_sm(pio, true);
-    pio_matrix_program_init(pio, sm, offset, OUT_PIN);
 
     // inicializar o botão de interrupção - GPIO5
     gpio_init(button_0);
@@ -60,9 +59,12 @@ int main()
     // interrupção da gpio habilitada
     gpio_set_irq_enabled_with_callback(button_0, GPIO_IRQ_EDGE_FALL, 1, &gpio_irq_handler);
 
+    initialization_buzzers(10, 27);
+
     while (true)
     {
         printf("\nfrequência de clock %ld\r\n", clock_get_hz(clk_sys));
+        play_tone(10, 50, 100);
         sleep_ms(1000);
     }
 }
