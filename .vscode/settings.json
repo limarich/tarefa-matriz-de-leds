@@ -43,6 +43,7 @@
         "buzzer.h": "c",
         "leds.h": "c",
         "pio_matrix.pio.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "pio.h": "c"
     }
 }

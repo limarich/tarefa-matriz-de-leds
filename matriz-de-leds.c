@@ -11,7 +11,7 @@
 #include "libs/leds.h"
 #include "libs/keyboard.h"
 #include "pio_matrix.pio.h"
- 
+
 // botão de interupção
 const uint button_0 = 5;
 const uint button_1 = 6;
@@ -46,6 +46,7 @@ int main()
     // configurações da PIO
     uint offset = pio_add_program(pio, &pio_matrix_program);
     uint sm = pio_claim_unused_sm(pio, true);
+    pio_matrix_program_init(pio, sm, offset, LED_PIN);
 
     // inicializar o botão de interrupção - GPIO5
     gpio_init(button_0);
@@ -60,12 +61,11 @@ int main()
     // interrupção da gpio habilitada
     gpio_set_irq_enabled_with_callback(button_0, GPIO_IRQ_EDGE_FALL, 1, &gpio_irq_handler);
 
-    initialization_buzzers(10, 27);
+    initialization_buzzers(BUZZER_A, BUZZER_B);
 
     while (true)
     {
         printf("\nfrequência de clock %ld\r\n", clock_get_hz(clk_sys));
-        play_tone(10, 50, 100);
         sleep_ms(1000);
     }
 }
