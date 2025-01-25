@@ -35,7 +35,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(matriz-de-leds matriz-de-leds.c  libs/buzzer.c libs/leds.c )
+add_executable(matriz-de-leds matriz-de-leds.c  libs/buzzer.c libs/leds.c libs/keyboard.c)
 
 pico_set_program_name(matriz-de-leds "matriz-de-leds")
 pico_set_program_version(matriz-de-leds "0.1")

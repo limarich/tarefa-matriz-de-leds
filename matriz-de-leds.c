@@ -9,8 +9,9 @@
 #include "hardware/pwm.h"
 #include "libs/buzzer.h"
 #include "libs/leds.h"
+#include "libs/keyboard.h"
 #include "pio_matrix.pio.h"
-
+ 
 // botão de interupção
 const uint button_0 = 5;
 const uint button_1 = 6;
