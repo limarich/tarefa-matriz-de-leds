@@ -11,6 +11,7 @@
 #include "libs/leds.h"
 #include "libs/keyboard.h"
 #include "pio_matrix.pio.h"
+#include "libs/animations.h"
 
 // botão de interupção
 const uint button_0 = 5;
@@ -23,7 +24,7 @@ static void gpio_irq_handler(uint gpio, uint32_t events)
     printf("HABILITANDO O MODO GRAVAÇÃO");
     reset_usb_boot(0, 0); // habilita o modo de gravação do microcontrolador
 }
-
+float intensity = 1.0f;
 // função principal
 int main()
 {
@@ -66,6 +67,7 @@ int main()
     while (true)
     {
         printf("\nfrequência de clock %ld\r\n", clock_get_hz(clk_sys));
+        draw_smile(pio, sm, intensity);
         sleep_ms(1000);
     }
 }
