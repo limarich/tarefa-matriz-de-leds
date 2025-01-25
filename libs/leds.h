@@ -4,9 +4,9 @@
 #include <stdint.h>
 #include "hardware/pio.h"
 
-#define PIXELS 25       // Defina a quantidade de pixels na matriz
-extern float intensity; // Intensidade de cor (deve ser inicializada em algum ponto)
-
+#define PIXELS 25
+#define LED_PIN 7
+extern float intensity;
 typedef struct
 {
     uint8_t red;
