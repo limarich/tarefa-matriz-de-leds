@@ -199,3 +199,17 @@ Esta função desenha uma animação de sorriso usando LEDs e gera um efeito son
 Esta função cria a animação de um sorriso utilizando os LEDs. Além de controlar a aparência visual dos LEDs (que pode simular um sorriso), a função também ativa o buzzer para gerar um efeito sonoro correspondente à animação.
 
 ---
+
+### **`draw_numbers(PIO pio, uint sm, float intensity)`**
+
+Esta função reproduz uma animação de um contador regressivo, usando LEDs RGB na cor Laranja, e gera um efeito sonoro, similar aos existentes na Globo, utilizando o buzzer para executar o som a cada número. A função controla tanto a iluminação dos LEDs quanto a ativação do buzzer de acordo com a intensidade fornecida.
+
+#### **Parâmetros**:
+
+- **`pio` (PIO):** PIO.
+- **`sm` (uint):** número da state machine.
+- **`intensity` (float):** A intensidade da animação, onde 0 representa a ausência de iluminação dos LEDs da animação e 1 representa o máximo de intensidade, com iluminação mais intensa dos LEDs. Este valor pode ser usado para controlar a dinâmica da animação e a duração do som gerado pelo buzzer.
+
+#### **Conclusão**:
+Ao ser selecionado a animação executa a animação de um contador regressivo utilizando os LEDs RGB. Além de controlar os LEDs gerando os números em sequência, a função também ativa o buzzer para gerar um efeito sonoro correspondente à animação.
+
