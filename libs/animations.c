@@ -354,6 +354,12 @@ void logo_embratech(PIO pio, uint sm, float intensity)
     for (uint i = 0; i < 18; i++)
     {
         draw_pio(frames[i], pio, sm, intensity);
+        if (i == 17)
+        {
+            play_tone(BUZZER_A, 440, 100);
+            sleep_ms(100);
+            play_tone(BUZZER_A, 553, 300);
+        }
         sleep_ms(100);
     }
 }
