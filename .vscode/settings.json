@@ -48,6 +48,7 @@
         "animations.h": "c",
         "math.h": "c",
         "teste": "cpp",
-        "adc.h": "c"
+        "adc.h": "c",
+        "keyboard.h": "c"
     }
 }
