@@ -13,6 +13,7 @@
 #include "hardware/clocks.h"
 #include "libs/animations.h"
 
+#define clear_terminal printf("\033[H\033[J");
 // botão de interupção
 const uint button_0 = 5;
 const uint button_1 = 6;
@@ -24,11 +25,18 @@ static void gpio_irq_handler(uint gpio, uint32_t events)
     printf("HABILITANDO O MODO GRAVAÇÃO");
     reset_usb_boot(0, 0); // habilita o modo de gravação do microcontrolador
 }
-float intensity = 0.3f;
+// variáveis globais
+float intensity = 0.5f;
+PIO pio;
+uint sm;
+
+void select_action(char key);
+void show_menu();
+
 // função principal
 int main()
 {
-    PIO pio = pio0;
+    pio = pio0;
     bool ok;
     uint16_t i;
     double r = 0.0, b = 0.0, g = 0.0;
@@ -40,13 +48,16 @@ int main()
     // Inicializa todos os códigos stdio padrão que estão ligados ao binário.
     stdio_init_all();
 
+    // configuração do teclado
+    setup_keyboard();
+
     printf("iniciando a transmissão PIO");
     if (ok)
         printf("clock set to %ld\n", clock_get_hz(clk_sys));
 
     // configurações da PIO
     uint offset = pio_add_program(pio, &pio_matrix_program);
-    uint sm = pio_claim_unused_sm(pio, true);
+    sm = pio_claim_unused_sm(pio, true);
     pio_matrix_program_init(pio, sm, offset, LED_PIN);
 
     // inicializar o botão de interrupção - GPIO5
@@ -63,19 +74,84 @@ int main()
     gpio_set_irq_enabled_with_callback(button_0, GPIO_IRQ_EDGE_FALL, 1, &gpio_irq_handler);
 
     initialization_buzzers(BUZZER_A, BUZZER_B);
-    int key = 4;
-
+    setup_keyboard();
+    show_menu();
     while (true)
     {
-        printf("\nfrequência de clock %ld\r\n", clock_get_hz(clk_sys));
-        draw_smile(pio, sm, intensity);
-        logo_embratech(pio, sm, intensity);
 
-        sleep_ms(1000);
-        if (key == 4) 
+        char key = scan_keypad();
+        if (key != '\0')
         {
-            draw_numbers(pio, sm, intensity);
-            sleep_ms(500);
+            select_action(key);
+            clear_terminal
+            show_menu();
         }
+        sleep_ms(10);
+    }
+}
+
+void show_menu()
+{
+    printf("\n=========================================\n");
+    printf("           MENU DE OPÇÕES               \n");
+    printf("=========================================\n");
+    printf(" Escolha uma ação pelo teclado:         \n");
+    printf("-----------------------------------------\n");
+    printf(" [0-9]  → Selecionar Animação           \n");
+    printf(" [A]    → Desligar todos os LEDs        \n");
+    printf(" [B]    → Acender LEDs AZUL (100%%)      \n");
+    printf(" [C]    → Acender LEDs VERMELHO (80%%)   \n");
+    printf(" [D]    → Acender LEDs VERDE (50%%)      \n");
+    printf(" [#]    → Acender LEDs BRANCO (20%%)     \n");
+    printf(" [*]    → Encerrar programa e gravação  \n");
+    printf("-----------------------------------------\n");
+    printf(" Pressione uma tecla para continuar...  \n");
+    printf("=========================================\n\n");
+}
+
+void select_action(char key)
+{
+    switch (key)
+    {
+    case '0':
+        printf("Animação 0 selecionada\n");
+        draw_smile(pio0, 0, intensity);
+        break;
+    case '1':
+        printf("Animação 1 selecionada\n");
+        draw_numbers(pio0, 0, intensity);
+        break;
+    case '2':
+        printf("Animação 2 selecionada\n");
+        logo_embarcatech(pio, sm, intensity);
+        break;
+    case '3':
+        printf("Animação 3 selecionada\n");
+        pacman(pio, sm, intensity);
+        break;
+    case '4':
+        printf("Animação 4 selecionada\n");
+        break;
+    case '5':
+        printf("Animação 5 selecionada\n");
+        break;
+    case '6':
+        printf("Animação 6 selecionada\n");
+        break;
+    case '7':
+        printf("Animação 7 selecionada\n");
+        break;
+    case '8':
+        printf("Animação 8 selecionada\n");
+        break;
+    case '9':
+        printf("Animação 9 selecionada\n");
+        break;
+    case '*':
+        printf("Encerrando o programa e entrando em modo de gravação\n");
+        reset_usb_boot(0, 0);
+        break;
+    default:
+        break;
     }
 }
