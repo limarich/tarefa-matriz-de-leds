@@ -123,7 +123,7 @@ void select_action(char key)
         break;
     case '2':
         printf("Animação 2 selecionada\n");
-        logo_embratech(pio, sm, intensity);
+        logo_embarcatech(pio, sm, intensity);
         break;
     case '3':
         printf("Animação 3 selecionada\n");
