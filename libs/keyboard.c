@@ -34,6 +34,26 @@ void setup_keyboard(void)
     }
 }
 
+void setup_keyboard_with_interrupt()
+{
+    for (int i = 0; i < ROWS; i++)
+    {
+        gpio_init(ROW_PINS[i]);
+        gpio_set_dir(ROW_PINS[i], GPIO_OUT);
+        gpio_put(ROW_PINS[i], 1); // nível alto por padrão
+    }
+
+    for (int i = 0; i < COLS; i++)
+    {
+        gpio_init(COL_PINS[i]);
+        gpio_set_dir(COL_PINS[i], GPIO_IN);
+        gpio_pull_up(COL_PINS[i]);
+
+        // Habilitar interrupção para todas as colunas
+        gpio_set_irq_enabled(COL_PINS[i], GPIO_IRQ_EDGE_FALL, true);
+    }
+}
+
 char scan_keypad(void)
 {
     for (int row = 0; row < ROWS; row++)

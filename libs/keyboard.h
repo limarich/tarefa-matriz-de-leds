@@ -15,6 +15,9 @@ extern const char KEYPAD[ROWS][COLS];
 // Inicializa os pinos do teclado
 void setup_keyboard(void);
 
+// incialização de teclado com interrupção
+void setup_keyboard_with_interrupt();
+
 // Lê o teclado matricial e retorna o caractere pressionado ou '\0' se nada for pressionado
 char scan_keypad(void);
 
