@@ -25,6 +25,8 @@ static void gpio_irq_handler(uint gpio, uint32_t events)
     reset_usb_boot(0, 0); // habilita o modo de gravação do microcontrolador
 }
 float intensity = 0.3f;
+
+
 // função principal
 int main()
 {
@@ -39,6 +41,9 @@ int main()
 
     // Inicializa todos os códigos stdio padrão que estão ligados ao binário.
     stdio_init_all();
+    
+    // configuração do teclado
+    setup_keyboard();
 
     printf("iniciando a transmissão PIO");
     if (ok)
@@ -63,17 +68,38 @@ int main()
     gpio_set_irq_enabled_with_callback(button_0, GPIO_IRQ_EDGE_FALL, 1, &gpio_irq_handler);
 
     initialization_buzzers(BUZZER_A, BUZZER_B);
-    int key = 4;
+   
 
     while (true)
     {
-        printf("\nfrequência de clock %ld\r\n", clock_get_hz(clk_sys));
-        //draw_smile(pio, sm, intensity);
-        sleep_ms(1000);
-        if (key == 4) 
+        char key = scan_keypad();
+        if (key)
         {
-            draw_numbers(pio, sm, intensity);
-            sleep_ms(500);
+            printf("Tecla pressionada: %c\n", key);
+            if (key == '1') // Tecla '1' pressionada
+            {
+                draw_smile(pio, sm, intensity); // Animação do Sorriso
+                sleep_ms(500);
+            }
+            if (key == '2') // Tecla '2' pressionada
+            {
+                draw_numbers(pio, sm, intensity); // Animação da Contagem Regressiva
+                sleep_ms(500);
+            }
+            if (key == '3') // Tecla '2' pressionada
+            {
+                logo_embratech(pio, sm, intensity); // Animação da Logo Embratech
+                sleep_ms(500);
+            }
+            if (key == '4') // Tecla '2' pressionada
+            {
+                pacman(pio, sm, intensity); // Animação do Pacman
+                sleep_ms(500);
+            }
+
+
+            
         }
+        sleep_ms(100); // Delay para evitar leituras repetidas
     }
 }
