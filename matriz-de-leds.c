@@ -65,9 +65,11 @@ int main()
     initialization_buzzers(BUZZER_A, BUZZER_B);
 
     while (true)
-    {
-        printf("\nfrequência de clock %ld\r\n", clock_get_hz(clk_sys));
-        draw_smile(pio, sm, intensity);
-        sleep_ms(1000);
+        {
+            printf("\nfrequência de clock %ld\r\n", clock_get_hz(clk_sys));
+            draw_smile(pio, sm, intensity);
+            sleep_ms(1000);
+            pacman(pio, sm, 0.5f);
+            sleep_ms(1000);
     }
 }

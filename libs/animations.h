@@ -6,5 +6,5 @@
 
 // Função para desenhar um sorriso
 void draw_smile(PIO pio, uint sm, float intensity);
-
+void pacman(PIO pio, uint sm, float intensity);
 #endif
