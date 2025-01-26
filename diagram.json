@@ -236,7 +236,7 @@
     [ "keypad1:R3", "pico:GP8", "gray", [ "v124.8", "h-240.3" ] ],
     [ "keypad1:R4", "pico:GP9", "gray", [ "v134.4", "h-249.8" ] ],
     [ "keypad1:C1", "pico:GP20", "purple", [ "v172.8", "h-221.21" ] ],
-    [ "pico:GP22", "bz2:1", "green", [ "h0" ] ],
+    [ "pico:GP21", "bz2:1", "green", [ "h0" ] ],
     [ "pico:GP18", "keypad1:C3", "purple", [ "h211.51", "v-191.96" ] ],
     [ "pico:GP17", "keypad1:C4", "purple", [ "h0" ] ],
     [ "pico:GP19", "keypad1:C2", "purple", [ "h0" ] ],
