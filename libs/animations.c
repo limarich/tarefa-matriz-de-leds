@@ -195,7 +195,7 @@ void draw_smile(PIO pio, uint sm, float intensity)
 void logo_embratech(PIO pio, uint sm, float intensity)
 {
     frame frames[18] = {
-        // 1° Frame
+        // 1° Frame - Parte 1
         {
             black, black, black, black, black, // linha 1 
             black, black, black, black, black, // linha 2
@@ -203,7 +203,8 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, black, black, black, black, // linha 4
             black, black, black, black, black, // linha 5
         },
-        // 2°.1
+
+        // 2° Frame - Parte 2.1
         {
             blue, black, black, black, black,     // linha 1 
             black, black, black, black, black, // linha 2
@@ -211,7 +212,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, black, black, black, black, // linha 4
             black, black, black, black, black, // linha 5
         },
-        // 2°.2
+        // 3° Frame - Parte 2.2
          {
             blue, blue, black, black, black,     // linha 1 
             black, black, black, black, black, // linha 2
@@ -219,7 +220,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, black, black, black, black, // linha 4
             black, black, black, black, black, // linha 5
         },
-        // 2°.3
+        // 4° Frame - Parte 2.3
         {
             blue, blue, blue, black, black,     // linha 1 
             black, black, black, black, black, // linha 2
@@ -227,7 +228,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, black, black, black, black, // linha 4
             black, black, black, black, black, // linha 5
         },
-        // 2°.4
+        // 5° Frame - Parte 2.4
         {
             blue, blue, blue, blue, black,     // linha 1 
             black, black, black, black, black, // linha 2
@@ -236,8 +237,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, black, black, black, black, // linha 5
         },
 
-        // Terceiro Parte
-        // 3.1
+        // 6° Frame - Parte 3.1
         { 
             blue, blue, blue, blue, black,    // linha 1
             black, blue, black, black, black, // linha 2
@@ -246,7 +246,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, black, black, black, black, // linha 5
 
         },
-        // 3.2
+        // 7° Frame - Parte 3.2
         { 
             blue, blue, blue, blue, black,    // linha 1
             black, blue, black, black, black, // linha 2
@@ -255,7 +255,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, black, black, black, black, // linha 5
 
         },
-        // 3.3
+        // 8° Frame - Parte 3.3
         { 
             blue, blue, blue, blue, black,    // linha 1
             black, blue, black, black, black, // linha 2
@@ -264,7 +264,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, black, black, black, black, // linha 5
 
         },
-        //3.4
+        // 9° Frame - Parte 3.4
         { 
             blue, blue, blue, blue, black,    // linha 1
             black, blue, black, black, black, // linha 2
@@ -274,8 +274,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
 
         },
 
-        // Quarto Frame
-        // 4.1
+        // 10° Frame - Parte 4.1
         {
             blue, blue, blue, blue, black,    // linha 1
             black, blue, black, black, black, // linha 2
@@ -283,7 +282,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, blue, black, black, black, // linha 4
             black, black, black, blue, black,    // linha 5
         },
-        // 4.2
+        // 11° Frame - Parte 4.2
         {
             blue, blue, blue, blue, black,    // linha 1
             black, blue, black, black, black, // linha 2
@@ -291,7 +290,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, blue, black, black, black, // linha 4
             black, black, blue, blue, black,    // linha 5
         },
-        // 4.3
+        // 12° Frame - Parte 4.3
         {
             blue, blue, blue, blue, black,    // linha 1
             black, blue, black, black, black, // linha 2
@@ -299,7 +298,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, blue, black, black, black, // linha 4
             black, blue, blue, blue, black,    // linha 5
         },
-        // 4.4
+        // 13° Frame - Parte 4.4
         {
             blue, blue, blue, blue, black,    // linha 1
             black, blue, black, black, black, // linha 2
@@ -308,9 +307,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             blue, blue, blue, blue, black,    // linha 5
         },
 
-        // Quinto Frame
-
-        // 5.1
+        // 14° Frame - Parte 5.1
         {
             blue, blue, blue, blue, black,    // linha 1
             black, blue, black, black, black, // linha 2
@@ -318,7 +315,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, blue, black, black, blue,  // linha 4
             blue, blue, blue, blue, black,    // linha 5
         },
-        // 5.2
+        // 15° Frame - Parte 5.2
         {
             blue, blue, blue, blue, black,    // linha 1
             black, blue, black, black, black, // linha 2
@@ -326,7 +323,8 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, blue, black, black, blue,  // linha 4
             blue, blue, blue, blue, black,    // linha 5
         },
-        // 6.1
+
+        // 16° Frame - Parte 6.1
         {
             blue, blue, blue, blue, black,    // linha 1
             black, blue, black, black, black, // linha 2
@@ -334,7 +332,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, blue, black, black, blue,  // linha 4
             blue, blue, blue, blue, black,    // linha 5
         },
-        // 6.2
+        // 17° Frame - Parte 6.2
         {
             blue, blue, blue, blue, black,    // linha 1
             black, blue, black, black, black, // linha 2
@@ -342,7 +340,7 @@ void logo_embratech(PIO pio, uint sm, float intensity)
             black, blue, black, black, blue,  // linha 4
             blue, blue, blue, blue, black,    // linha 5
         },
-        // 6.3
+        // 18° Frame - Parte 6.3
         {
             blue, blue, blue, blue, black,    // linha 1
             black, blue, black, black, black, // linha 2
