@@ -7,6 +7,7 @@
 #define PIXELS 25
 #define LED_PIN 7
 extern float intensity;
+
 typedef struct
 {
     uint8_t red;

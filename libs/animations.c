@@ -35,6 +35,9 @@ void reset_leds(PIO pio, uint sm)
     play_tone(BUZZER_A, 1000, 100);
     sleep_ms(50);
     play_tone(BUZZER_A, 2000, 100);
+
+    stop_animation = false;
+    is_animation_running = false;
 }
 
 void draw_smile(PIO pio, uint sm, float intensity)
@@ -203,6 +206,11 @@ void draw_smile(PIO pio, uint sm, float intensity)
     };
     for (uint i = 0; i < 5; i++)
     {
+        if (stop_animation)
+        {
+            printf("[INFO] Animação interrompida!\n");
+            break;
+        }
         draw_pio(frames[i], pio, sm, intensity);
         if (i != 4)
         {
@@ -251,6 +259,11 @@ void draw_numbers(PIO pio, uint sm, float intensity)
          black, orange, orange, orange, black}};
     for (uint i = 0; i < 5; i++)
     {
+        if (stop_animation)
+        {
+            printf("[INFO] Animação interrompida!\n");
+            break;
+        }
         draw_pio(frames[i], pio, sm, intensity);
         if ((i % 2) == 0)
         {

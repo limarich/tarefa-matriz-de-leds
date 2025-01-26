@@ -46,6 +46,9 @@
         "stdlib.h": "c",
         "pio.h": "c",
         "animations.h": "c",
-        "math.h": "c"
+        "math.h": "c",
+        "cstdint": "c",
+        "stdio.h": "c",
+        "clocks.h": "c"
     }
 }
