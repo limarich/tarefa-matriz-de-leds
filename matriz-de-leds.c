@@ -68,6 +68,7 @@ int main()
     {
         printf("\nfrequência de clock %ld\r\n", clock_get_hz(clk_sys));
         draw_smile(pio, sm, intensity);
+        logo_embratech(pio, sm, intensity);
         sleep_ms(1000);
     }
 }

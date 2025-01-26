@@ -8,6 +8,7 @@ const pixel green = {32, 216, 26};
 const pixel dark_green = {6, 80, 36};
 const pixel brown = {181, 68, 81};
 const pixel red = {252, 6, 6};
+const pixel blue = {65, 105, 225};
 
 void draw_smile(PIO pio, uint sm, float intensity)
 {
@@ -188,5 +189,173 @@ void draw_smile(PIO pio, uint sm, float intensity)
             play_tone(BUZZER_A, 50, 100);
         }
         sleep_ms(500);
+    }
+}
+
+void logo_embratech(PIO pio, uint sm, float intensity)
+{
+    frame frames[18] = {
+        // 1° Frame
+        {
+            black, black, black, black, black, // linha 1 
+            black, black, black, black, black, // linha 2
+            black, black, black, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+        },
+        // 2°.1
+        {
+            blue, black, black, black, black,     // linha 1 
+            black, black, black, black, black, // linha 2
+            black, black, black, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+        },
+        // 2°.2
+         {
+            blue, blue, black, black, black,     // linha 1 
+            black, black, black, black, black, // linha 2
+            black, black, black, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+        },
+        // 2°.3
+        {
+            blue, blue, blue, black, black,     // linha 1 
+            black, black, black, black, black, // linha 2
+            black, black, black, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+        },
+        // 2°.4
+        {
+            blue, blue, blue, blue, black,     // linha 1 
+            black, black, black, black, black, // linha 2
+            black, black, black, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+        },
+
+        // Terceiro Parte
+        // 3.1
+        { 
+            blue, blue, blue, blue, black,    // linha 1
+            black, blue, black, black, black, // linha 2
+            black, black, black, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+
+        },
+        // 3.2
+        { 
+            blue, blue, blue, blue, black,    // linha 1
+            black, blue, black, black, black, // linha 2
+            black, black, black, blue, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+
+        },
+        // 3.3
+        { 
+            blue, blue, blue, blue, black,    // linha 1
+            black, blue, black, black, black, // linha 2
+            black, black, black, blue, black, // linha 3
+            black, blue, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+
+        },
+        //3.4
+        { 
+            blue, blue, blue, blue, black,    // linha 1
+            black, blue, black, black, black, // linha 2
+            black, black, black, blue, black, // linha 3
+            black, blue, black, black, black, // linha 4
+            black, black, black, blue, black, // linha 5
+
+        },
+
+        // Quarto Frame
+        // 4.1
+        {
+            blue, blue, blue, blue, black,    // linha 1
+            black, blue, black, black, black, // linha 2
+            black, black, black, blue, black, // linha 3
+            black, blue, black, black, black, // linha 4
+            black, black, black, blue, black,    // linha 5
+        },
+        // 4.2
+        {
+            blue, blue, blue, blue, black,    // linha 1
+            black, blue, black, black, black, // linha 2
+            black, black, black, blue, black, // linha 3
+            black, blue, black, black, black, // linha 4
+            black, black, blue, blue, black,    // linha 5
+        },
+        // 4.3
+        {
+            blue, blue, blue, blue, black,    // linha 1
+            black, blue, black, black, black, // linha 2
+            black, black, black, blue, black, // linha 3
+            black, blue, black, black, black, // linha 4
+            black, blue, blue, blue, black,    // linha 5
+        },
+        // 4.4
+        {
+            blue, blue, blue, blue, black,    // linha 1
+            black, blue, black, black, black, // linha 2
+            black, black, black, blue, black, // linha 3
+            black, blue, black, black, black, // linha 4
+            blue, blue, blue, blue, black,    // linha 5
+        },
+
+        // Quinto Frame
+
+        // 5.1
+        {
+            blue, blue, blue, blue, black,    // linha 1
+            black, blue, black, black, black, // linha 2
+            black, black, black, blue, black,  // linha 3
+            black, blue, black, black, blue,  // linha 4
+            blue, blue, blue, blue, black,    // linha 5
+        },
+        // 5.2
+        {
+            blue, blue, blue, blue, black,    // linha 1
+            black, blue, black, black, black, // linha 2
+            blue, black, black, blue, black,  // linha 3
+            black, blue, black, black, blue,  // linha 4
+            blue, blue, blue, blue, black,    // linha 5
+        },
+        // 6.1
+        {
+            blue, blue, blue, blue, black,    // linha 1
+            black, blue, black, black, black, // linha 2
+            blue, blue, black, blue, black,     // linha 3
+            black, blue, black, black, blue,  // linha 4
+            blue, blue, blue, blue, black,    // linha 5
+        },
+        // 6.2
+        {
+            blue, blue, blue, blue, black,    // linha 1
+            black, blue, black, black, black, // linha 2
+            blue, blue, blue, blue, black,     // linha 3
+            black, blue, black, black, blue,  // linha 4
+            blue, blue, blue, blue, black,    // linha 5
+        },
+        // 6.3
+        {
+            blue, blue, blue, blue, black,    // linha 1
+            black, blue, black, black, black, // linha 2
+            blue, blue, blue, blue, blue,     // linha 3
+            black, blue, black, black, blue,  // linha 4
+            blue, blue, blue, blue, black,    // linha 5
+        },
+
+    };
+
+    for (uint i = 0; i < 18; i++)
+    {
+        draw_pio(frames[i], pio, sm, intensity);
+        sleep_ms(100);
     }
 }
