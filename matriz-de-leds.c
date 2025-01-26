@@ -24,7 +24,7 @@ static void gpio_irq_handler(uint gpio, uint32_t events)
     printf("HABILITANDO O MODO GRAVAÇÃO");
     reset_usb_boot(0, 0); // habilita o modo de gravação do microcontrolador
 }
-float intensity = 0.5f;
+float intensity = 0.3f;
 // função principal
 int main()
 {
@@ -68,7 +68,7 @@ int main()
     while (true)
     {
         printf("\nfrequência de clock %ld\r\n", clock_get_hz(clk_sys));
-        draw_smile(pio, sm, intensity);
+        //draw_smile(pio, sm, intensity);
         sleep_ms(1000);
         if (key == 4) 
         {

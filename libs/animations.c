@@ -8,6 +8,7 @@ const pixel green = {32, 216, 26};
 const pixel dark_green = {6, 80, 36};
 const pixel brown = {181, 68, 81};
 const pixel red = {252, 6, 6};
+const pixel roxo = {15, 0, 15};
 const pixel orange = {255, 65, 0};
 
 void draw_smile(PIO pio, uint sm, float intensity)
@@ -200,37 +201,37 @@ void draw_numbers(PIO pio, uint sm, float intensity)
         {
             black, orange, orange, orange, black,
             black, orange, black, black, black, 
-            black, orange, orange, orange, black, 
+            black, orange, orange, orange, black,  
             black, black, black, orange, black,  
             black, orange, orange, orange, black 
         },
         {
-            black, orange, black, orange, black,
-            black, orange, black, orange, black, 
-            black, orange, orange, orange, black,  
             black, black, black, orange, black,  
-            black, black, black, orange, black 
+            black, black, black, orange, black,
+            black, orange, orange, orange, black,  
+            black, orange, black, orange, black, 
+            black, orange, black, orange, black,
         },
         {
             black, orange, orange, orange, black,
             black, black, black, orange, black, 
-            black, black, orange, orange, black, 
+            black, orange, orange, orange, black, 
             black, black, black, orange, black,
             black, orange, orange, orange, black 
         },
         {
             black, orange, orange, orange, black,
-            black, black, black, orange, black, 
-            black, orange, orange, orange, black,  
-            black, orange, black, black, black,  
-            black, orange, orange, orange, black 
+            black, black, black, orange, black,
+            black, orange, orange, orange, black, 
+            black, orange, black, black, black, 
+            black, orange, orange, orange, black
         },
         {
-            black, orange, orange, black, black,
-            black, black, orange, black, black, 
+            black, orange, orange, orange, black,
             black, black, orange, black, black,  
             black, black, orange, black, black,  
-            black, orange, orange, orange, black 
+            black, black, orange, black, black,
+            black, black, orange, orange, black
         }
     };
     for (uint i = 0; i < 5; i++)
