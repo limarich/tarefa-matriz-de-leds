@@ -1,16 +1,16 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <math.h>
+#include <stdlib.h>
+#include "libs/leds.h"
 #include "pico/stdlib.h"
+#include "libs/buzzer.h"
 #include "hardware/pio.h"
-#include "hardware/clocks.h"
 #include "hardware/adc.h"
 #include "pico/bootrom.h"
 #include "hardware/pwm.h"
-#include "libs/buzzer.h"
-#include "libs/leds.h"
 #include "libs/keyboard.h"
 #include "pio_matrix.pio.h"
+#include "hardware/clocks.h"
 #include "libs/animations.h"
 
 // botão de interupção
@@ -24,7 +24,7 @@ static void gpio_irq_handler(uint gpio, uint32_t events)
     printf("HABILITANDO O MODO GRAVAÇÃO");
     reset_usb_boot(0, 0); // habilita o modo de gravação do microcontrolador
 }
-float intensity = 1.0f;
+float intensity = 0.3f;
 // função principal
 int main()
 {
@@ -63,11 +63,17 @@ int main()
     gpio_set_irq_enabled_with_callback(button_0, GPIO_IRQ_EDGE_FALL, 1, &gpio_irq_handler);
 
     initialization_buzzers(BUZZER_A, BUZZER_B);
+    int key = 4;
 
     while (true)
     {
         printf("\nfrequência de clock %ld\r\n", clock_get_hz(clk_sys));
-        draw_smile(pio, sm, intensity);
+        //draw_smile(pio, sm, intensity);
         sleep_ms(1000);
+        if (key == 4) 
+        {
+            draw_numbers(pio, sm, intensity);
+            sleep_ms(500);
+        }
     }
 }
