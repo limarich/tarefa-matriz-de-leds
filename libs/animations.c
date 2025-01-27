@@ -875,6 +875,5 @@ void tecla_B(PIO pio, uint sm, float intensity){
     // Exibição da animação
     for (int i = 0; i < 1; i++) { // Exibe cada frame uma vez
         draw_pio(frames[i], pio, sm, 1.0); // Mostra o frame atual
-        sleep_ms(700); // Troca de frame a cada 700 ms
     }
 }
