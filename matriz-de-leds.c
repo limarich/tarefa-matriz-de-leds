@@ -48,6 +48,9 @@ int main()
     // Inicializa todos os códigos stdio padrão que estão ligados ao binário.
     stdio_init_all();
 
+    // configuração do teclado
+    setup_keyboard();
+
     printf("iniciando a transmissão PIO");
     if (ok)
         printf("clock set to %ld\n", clock_get_hz(clk_sys));
@@ -120,9 +123,11 @@ void select_action(char key)
         break;
     case '2':
         printf("Animação 2 selecionada\n");
+        logo_embarcatech(pio, sm, intensity);
         break;
     case '3':
         printf("Animação 3 selecionada\n");
+        pacman(pio, sm, intensity);
         break;
     case '4':
         printf("Animação 4 selecionada\n");
