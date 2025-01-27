@@ -1,5 +1,5 @@
 #include "animations.h"
-
+#include "keyboard.h"
 // CORES PARA AS ANIMAÇÕES
 
 const pixel black = {0, 0, 0};
