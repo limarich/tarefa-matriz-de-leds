@@ -8,8 +8,8 @@
 void draw_smile(PIO pio, uint sm, float intensity);
 // Função: Animação de uma contagem reegrissiva.
 void draw_numbers(PIO pio, uint sm, float intensity);
-// Função: Animação da logo da Embratech
+void reset_leds(PIO pio, uint sm);
 void logo_embarcatech(PIO pio, uint sm, float intensity);
-// Função: Animação do Pacman
 void pacman(PIO pio, uint sm, float intensity);
+
 #endif

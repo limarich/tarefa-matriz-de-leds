@@ -115,11 +115,11 @@ void select_action(char key)
     {
     case '0':
         printf("Animação 0 selecionada\n");
-        draw_smile(pio0, 0, intensity);
+        draw_smile(pio0, sm, intensity);
         break;
     case '1':
         printf("Animação 1 selecionada\n");
-        draw_numbers(pio0, 0, intensity);
+        draw_numbers(pio0, sm, intensity);
         break;
     case '2':
         printf("Animação 2 selecionada\n");
@@ -154,4 +154,6 @@ void select_action(char key)
     default:
         break;
     }
+    // reset nos leds
+    reset_leds(pio0, sm);
 }
