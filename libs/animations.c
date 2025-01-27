@@ -12,6 +12,7 @@ const pixel roxo = {15, 0, 15};
 const pixel orange = {255, 65, 0};
 const pixel blue = {65, 105, 225};
 const pixel yellow = {241, 255, 0};
+const pixel gray = {169, 169, 169};
 
 void reset_leds(PIO pio, uint sm)
 {
@@ -786,3 +787,79 @@ void pacman(PIO pio, uint sm, float intensity)
         sleep_ms(10);
     }
 }
+
+void draw_rocket_animation(PIO pio, uint sm, float intensity) {
+    frame frames[8] = {
+        // Frame 1: Foguete na base
+       {
+        black, yellow, orange, yellow, black,
+        black, gray, gray, gray, black,
+        black, white, blue, white, black,
+        black, black, white, black, black,
+        black, black, black, black, black,
+    },
+    // Frame 2 
+    {
+        black, red, red, red, black,
+        black, yellow, orange, yellow, black,
+        black, gray, gray, gray, black,
+        black, white, blue, white, black,
+        black, black, white, black, black,
+    },
+    // Frame 3 
+    {
+        black, black, black, black, black,
+        black, red, red, red, black,
+        black, yellow, orange, yellow, black,
+        black, gray, gray, gray, black,
+        black, white, blue, white, black,
+    },
+    // Frame 4 
+    {
+        black, black, white, black, black,
+        black, black, black, black, black,
+        black, red, red, red, black,
+        black, yellow, orange, yellow, black,
+        black, gray, gray, gray, black,
+    },
+    // Frame 5 
+    {
+        black, white, blue, white, black,
+        black, black, white, black, black,
+        black, black, black, black, black,
+        black, red, orange, red, black,
+        black, yellow, orange, yellow, black,
+    },
+    // Frame 6 
+    {
+        black, gray, gray, gray, black,
+        black, white, blue, white, black,
+        black, black, white, black, black,
+        black, black, black, black, black,
+        black, red, red, red, black,
+    },
+    // Frame 7
+    {
+        black, yellow, orange, yellow, black,
+        black, gray, gray, gray, black,
+        black, white, blue, white, black,
+        black, black, white, black, black,
+        black, black, black, black, black,
+    },
+};
+
+    // Exibição da animação
+    for (int i = 0; i < 7; i++) { // Exibe cada frame uma vez
+        draw_pio(frames[i], pio, sm, intensity); // Mostra o frame atual
+       
+        // Sons simples que fazem sentido para um foguete
+        if (i < 4) {
+            play_tone(BUZZER_A, 200 + i * 50, 300); // Sons crescentes durante a subida
+        } else if (i == 4 || i == 5) {
+            play_tone(BUZZER_A, 100, 300); // Sons graves para a chama
+        }
+        
+        sleep_ms(700); // Troca de frame a cada 700 ms
+    }
+}
+

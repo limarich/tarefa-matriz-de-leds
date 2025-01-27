@@ -131,6 +131,7 @@ void select_action(char key)
         break;
     case '4':
         printf("Animação 4 selecionada\n");
+        draw_rocket_animation(pio, sm, intensity);
         break;
     case '5':
         printf("Animação 5 selecionada\n");
