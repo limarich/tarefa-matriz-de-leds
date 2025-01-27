@@ -13,6 +13,7 @@ const pixel orange = {255, 65, 0};
 const pixel blue = {65, 105, 225};
 const pixel yellow = {241, 255, 0};
 const pixel gray = {169, 169, 169};
+const pixel azul = {0, 0, 255};
 
 void reset_leds(PIO pio, uint sm)
 {
@@ -863,3 +864,17 @@ void draw_rocket_animation(PIO pio, uint sm, float intensity) {
     }
 }
 
+void tecla_B(PIO pio, uint sm, float intensity){
+    frame frames[1] = {
+        {azul, azul, azul, azul, azul,
+        azul, azul, azul, azul, azul,
+        azul, azul, azul, azul, azul,
+        azul, azul, azul, azul, azul,
+        azul, azul, azul, azul, azul}
+    };
+    // Exibição da animação
+    for (int i = 0; i < 1; i++) { // Exibe cada frame uma vez
+        draw_pio(frames[i], pio, sm, 1.0); // Mostra o frame atual
+        sleep_ms(700); // Troca de frame a cada 700 ms
+    }
+}
