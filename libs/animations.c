@@ -7,7 +7,7 @@
 const pixel black = {0, 0, 0};
 const pixel white = {213, 210, 210};
 const pixel green = {32, 216, 26};
-const pixel dark_green = {10, 200, 20};
+const pixel dark_green = {0, 255, 0};
 const pixel brown = {181, 68, 81};
 const pixel red = {252, 6, 6};
 const pixel roxo = {15, 0, 15};
