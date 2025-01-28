@@ -2,6 +2,7 @@
 #include "keyboard.h"
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
 // CORES PARA AS ANIMAÇÕES
 
 const pixel black = {0, 0, 0};
@@ -1028,6 +1029,41 @@ void tecla_B(PIO pio, uint sm, float intensity)
         draw_pio(frames[i], pio, sm, 1.0); // Mostra o frame atual
     }
 }
+
+
+// Função que gera a animação acendendo os LEDs vermelho de forma aleatorio para a Tarefa C
+void tecla_C(PIO pio, uint sm, float intensity) {
+    frame frames;
+    bool leds_status[25] = {false}; // Array para verificar quais LEDs estão acesos
+    int leds_on = 0;                // Contador de LEDs acesos
+
+    // Inicializa todos os LEDs como preto
+    for (int i = 0; i < 25; i++) {
+        frames[i] = black;
+    }
+
+    // Inicializa o gerador de números aleatórios
+    srand(time(NULL));
+
+    // Acende LEDs até que todos tenham sido ativados
+    while (leds_on < 25) {
+        int random_led = rand() % 25; // Escolhe um LED aleatório (0 a 24)
+
+        // Se o LED ainda não estiver aceso, acende e atualiza o contador
+        if (!leds_status[random_led]) {
+            frames[random_led] = red;
+            leds_status[random_led] = true; // Marca o LED como aceso
+            leds_on++;                      // Incrementa o contador de LEDs acesos
+
+            draw_pio(frames, pio, sm, intensity);
+            sleep_ms(50);
+        }
+    }
+    // Aguarda 2 segundos antes de encerrar a animação
+    draw_pio(frames, pio, sm, intensity);
+    sleep_ms(2000);
+}
+
 
 void formula1_semaphore(PIO pio, uint sm, float intensity)
 {
