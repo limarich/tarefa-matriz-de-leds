@@ -143,12 +143,18 @@ void select_action(char key)
         break;
     case '7':
         printf("Animação 7 selecionada\n");
+        bandeira(pio, sm, intensity);
         break;
     case '8':
         printf("Animação 8 selecionada\n");
         break;
     case '9':
         printf("Animação 9 selecionada\n");
+        break;
+    case 'B':
+        printf("Leds Azuis em 100\n");
+        tecla_B(pio, sm, intensity);
+        sleep_ms(1000);
         break;
     case '*':
         printf("Encerrando o programa e entrando em modo de gravação\n");
