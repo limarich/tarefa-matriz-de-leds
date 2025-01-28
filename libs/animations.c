@@ -1044,8 +1044,8 @@ void tecla_B(PIO pio, uint sm, float intensity)
          azul, azul, azul, azul, azul}};
     // Exibição da animação
     for (int i = 0; i < 1; i++)
-    {                                      // Exibe cada frame uma vez
-        draw_pio(frames[i], pio, sm, 1.0); // Mostra o frame atual
+    {                                            // Exibe cada frame uma vez
+        draw_pio(frames[i], pio, sm, intensity); // Mostra o frame atual
     }
 }
 
