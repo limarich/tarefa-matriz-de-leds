@@ -35,20 +35,5 @@
     "raspberry-pi-pico.cmakeAutoConfigure": true,
     "raspberry-pi-pico.useCmakeTools": false,
     "raspberry-pi-pico.cmakePath": "${HOME}/.pico-sdk/cmake/v3.29.9/bin/cmake",
-    "raspberry-pi-pico.ninjaPath": "${HOME}/.pico-sdk/ninja/v1.12.1/ninja",
-    "C_Cpp.errorSquiggles": "disabled",
-    "files.associations": {
-        "*.html": "html",
-        "*.css": "css",
-        "buzzer.h": "c",
-        "leds.h": "c",
-        "pio_matrix.pio.h": "c",
-        "stdlib.h": "c",
-        "pio.h": "c",
-        "animations.h": "c",
-        "math.h": "c",
-        "teste": "cpp",
-        "adc.h": "c",
-        "keyboard.h": "c"
-    }
+    "raspberry-pi-pico.ninjaPath": "${HOME}/.pico-sdk/ninja/v1.12.1/ninja"
 }

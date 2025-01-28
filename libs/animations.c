@@ -15,6 +15,10 @@ const pixel orange = {255, 65, 0};
 const pixel blue = {65, 105, 225};
 const pixel yellow = {241, 255, 0};
 const pixel gray = {169, 169, 169};
+const pixel yellow1 = {218, 195, 90};
+const pixel yellow2 = {241, 184, 30};
+const pixel yellow3 = {241, 174, 30}; 
+
 
 void reset_leds(PIO pio, uint sm)
 {
@@ -941,4 +945,133 @@ void formula1_semaphore(PIO pio, uint sm, float intensity) {
     draw_pio(frames[5], pio, sm, intensity);
     play_tone(BUZZER_A, 987, 700); // Nota B5, 700ms.
     sleep_ms(1500); // Tempo aumentado para 1500ms.
+}
+
+void animacaoSun_fun(PIO pio, uint sm, float intensity)
+{
+    frame frames[13] = {
+        // 1° Frame
+        {
+            black, black, black, black, black, // linha 1
+            black, black, black, black, black, // linha 2
+            black, black, black, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+        },
+        // 2°
+        {
+            black, black, black, black, black,  // linha 1
+            black, black, black, black, black, // linha 2
+            black, black, yellow1, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+        },
+        // 3°
+        {
+            black, black, black, black, black,   // linha 1
+            black, black, yellow2, black, black, // linha 2
+            black, yellow2, yellow1, yellow2, black, // linha 3
+            black, black, yellow2, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+        },
+        // 4°
+        {
+            black, black, yellow3, black, black,   // linha 1
+            black, black, yellow2, black, black, // linha 2
+            yellow3, yellow2, yellow1, yellow2, yellow3, // linha 3
+            black, black, yellow2, black, black, // linha 4
+            black, black, yellow3, black, black, // linha 5
+        },
+        // 5°
+        {
+            black, black, black, black, black,   // linha 1
+            black, black, yellow2, black, black, // linha 2
+            black, yellow2, yellow1, yellow2, black, // linha 3
+            black, black, yellow2, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+        },
+
+        // 6°
+        {
+            black, black, black, black, black,  // linha 1
+            black, black, black, black, black, // linha 2
+            black, black, yellow1, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+
+        },
+        // 7°
+        {
+            black, black, black, black, black,     // linha 1
+            black, black, black, black, black,  // linha 2
+            black, black, black, black, black,  // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+
+        },
+        // 9°
+        {
+            black, black, black, black, black,  // linha 1
+            black, black, black, black, black, // linha 2
+            black, black, yellow1, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+        },
+        // 10°
+        {
+            black, black, black, black, black,   // linha 1
+            black, black, yellow2, black, black, // linha 2
+            black, yellow2, yellow1, yellow2, black, // linha 3
+            black, black, yellow2, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+        },
+        // 11°
+        {
+            black, black, yellow3, black, black,   // linha 1
+            black, black, yellow2, black, black, // linha 2
+            yellow3, yellow2, yellow1, yellow2, yellow3, // linha 3
+            black, black, yellow2, black, black, // linha 4
+            black, black, yellow3, black, black, // linha 5
+        },
+        // 12°
+        {
+            black, black, black, black, black,   // linha 1
+            black, black, yellow2, black, black, // linha 2
+            black, yellow2, yellow1, yellow2, black, // linha 3
+            black, black, yellow2, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+        },
+
+        // 13°
+        {
+            black, black, black, black, black,  // linha 1
+            black, black, black, black, black, // linha 2
+            black, black, yellow1, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+
+        },
+        // 14°
+        {
+            black, black, black, black, black,     // linha 1
+            black, black, black, black, black,  // linha 2
+            black, black, black, black, black,  // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+
+        }
+        
+    };
+
+    for (uint i = 0; i < 13; i++)
+    {
+        draw_pio(frames[i], pio, sm, intensity);
+        if (i == 12)
+        {
+            play_tone(BUZZER_A, 440, 100);
+            sleep_ms(100);
+            play_tone(BUZZER_A, 553, 300);
+        }
+        sleep_ms(300);
+    }
 }
