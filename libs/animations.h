@@ -19,4 +19,5 @@ void tecla_B(PIO pio, uint sm, float intensity);
 void tecla_C(PIO pio, uint sm, float intensity);
 void tecla_D(PIO pio, uint sm, float intensity);
 void tecla_hash(PIO pio, uint sm, float intensity);
+void clear_leds(PIO pio, uint sm);
 #endif
