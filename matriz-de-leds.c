@@ -131,22 +131,29 @@ void select_action(char key)
         break;
     case '4':
         printf("Animação 4 selecionada\n");
+        draw_rocket_animation(pio, sm, intensity);
         break;
     case '5':
         printf("Animação 5 selecionada\n");
-        bandeira(pio, sm, intensity);
+        formula1_semaphore(pio, sm, intensity);
         break;
     case '6':
         printf("Animação 6 selecionada\n");
         break;
     case '7':
         printf("Animação 7 selecionada\n");
+        bandeira(pio, sm, intensity);
         break;
     case '8':
         printf("Animação 8 selecionada\n");
         break;
     case '9':
         printf("Animação 9 selecionada\n");
+        break;
+    case 'B':
+        printf("Leds Azuis em 100\n");
+        tecla_B(pio, sm, intensity);
+        sleep_ms(1000);
         break;
     case '*':
         printf("Encerrando o programa e entrando em modo de gravação\n");
