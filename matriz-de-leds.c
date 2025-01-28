@@ -165,14 +165,14 @@ void select_action(char key)
         printf("Leds Vermelhos na Intensidade 80%\n");
         tecla_C(pio, sm, 0.8);
         sleep_ms(1000);
-        break;
         return;
+        break;
     case 'D':
         printf("Leds Verdes na Intensidade 50%\n");
         tecla_D(pio, sm, 0.5);
         sleep_ms(1000);
-        break;
         return;
+        break;
 
     case '#':
         printf("Leds Brancos na Intensidade 20%\n");
