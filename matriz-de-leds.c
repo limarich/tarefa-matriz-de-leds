@@ -157,7 +157,7 @@ void select_action(char key)
         break;
     case 'B':
         printf("Leds Azuis em 100\n");
-        tecla_B(pio, sm, intensity);
+        tecla_B(pio, sm, 1);
         sleep_ms(1000);
         return;
         break;
