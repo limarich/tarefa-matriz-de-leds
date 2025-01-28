@@ -254,49 +254,50 @@ void draw_numbers(PIO pio, uint sm, float intensity)
 {
     // É utilizado a cor laranja em cada frame.
     frame frames[5] = {
-        {black, orange, orange, orange, black,
-         black, orange, black, black, black,
-         black, orange, orange, orange, black,
-         black, black, black, orange, black,
-         black, orange, orange, orange, black},
-        {black, orange, black, orange, black,
-         black, orange, black, orange, black,
-         black, orange, orange, orange, black,
-         black, black, black, orange, black,
-         black, black, black, orange, black},
-        {black, orange, orange, orange, black,
-         black, black, black, orange, black,
-         black, black, orange, orange, black,
-         black, black, black, orange, black,
-         black, orange, orange, orange, black},
-        {black, orange, orange, orange, black,
-         black, black, black, orange, black,
-         black, orange, orange, orange, black,
-         black, orange, black, black, black,
-         black, orange, orange, orange, black},
-        {black, orange, orange, black, black,
-         black, black, orange, black, black,
-         black, black, orange, black, black,
-         black, black, orange, black, black,
-         black, orange, orange, orange, black}};
+        {
+            black, orange, orange, orange, black,
+            black, black, black, orange, black,
+            black, orange, orange, orange, black, 
+            black, orange, black, black, black, 
+            black, orange, orange, orange, black
+        },
+        {
+            black, orange, black, black, black,  
+            black, black, black, orange, black,
+            black, orange, orange, orange, black,  
+            black, orange, black, orange, black, 
+            black, orange, black, orange, black,
+        },
+        {
+            black, orange, orange, orange, black,
+            black, black, black, orange, black, 
+            black, orange, orange, orange, black, 
+            black, black, black, orange, black,
+            black, orange, orange, orange, black 
+        },
+        {
+            black, orange, orange, orange, black,
+            black, orange, black, black, black, 
+            black, orange, orange, orange, black,  
+            black, black, black, orange, black,  
+            black, orange, orange, orange, black 
+        },
+        {
+            black, orange, orange, orange, black,
+            black, black, orange, black, black,  
+            black, black, orange, black, black,  
+            black, black, orange, black, black,
+            black, black, orange, orange, black
+        }
+    };
     for (uint i = 0; i < 5; i++)
     {
         draw_pio(frames[i], pio, sm, intensity);
-        if ((i % 2) == 0)
-        {
-            play_tone(BUZZER_A, 1000, 200);
-            sleep_ms(100);
-            play_tone(BUZZER_B, 1500, 100);
-        }
-        if ((i % 2) != 0)
-        {
-            play_tone(BUZZER_A, 1000, 200);
-            sleep_ms(100);
-            play_tone(BUZZER_B, 1500, 100);
-        }
-        sleep_ms(800);
+        play_tone(BUZZER_A, 1000, 200);
+        sleep_ms(100);
+        play_tone(BUZZER_B, 1500, 100);
+        sleep_ms(500);
     }
-    sleep_ms(1000);
 }
 
 void logo_embarcatech(PIO pio, uint sm, float intensity)
