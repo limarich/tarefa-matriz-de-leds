@@ -142,6 +142,7 @@ void select_action(char key)
         break;
     case '7':
         printf("Animação 7 selecionada\n");
+        bandeira(pio, sm, intensity);
         break;
     case '8':
         printf("Animação 8 selecionada\n");

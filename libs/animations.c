@@ -958,3 +958,230 @@ void formula1_semaphore(PIO pio, uint sm, float intensity) {
     play_tone(BUZZER_A, 987, 700); // Nota B5, 700ms.
     sleep_ms(1500); // Tempo aumentado para 1500ms.
 }
+
+
+void bandeira(PIO pio, uint sm, float intensity)
+{
+    frame frames[24] = {
+    // 1° frame
+    {
+        red,   black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 2° frame
+    {
+        red,   red,   black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 3° frame
+    {
+        red,   red,   red,   black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 4° frame
+    {
+        red,   red,   red,   red,   black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 5° frame
+    {
+        red,   red,   red,   red,   red,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 6° frame
+    {
+        red,   red,   red,   red,   red,
+        red,   black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 7° frame
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 8° frame
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 9° frame
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 10° frame (linha vermelha completa)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        black, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 11° frame (linha branca começa)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, black, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 12° frame (linha branca continua)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, white, black, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 13° frame (linha branca continua)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, white, white, black, black,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 14° frame (linha branca completa)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, white, white, white, white,
+        black, black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 15° frame (linha azul começa)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, white, white, white, white,
+        blue,   black, black, black, black,
+        black, black, black, black, black,
+    },
+    // 16° frame (linha azul continua)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, white, white, white, white,
+        blue,  blue,  black, black, black,
+        black, black, black, black, black,
+    },
+    // 17° frame (linha azul continua)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, white, white, white, white,
+        blue,  blue,   blue,   black, black,
+        black, black, black, black, black,
+    },
+    // 18° frame (linha azul continua)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, white, white, white, white,
+        blue,   blue,   blue,   blue,  black,
+        black, black, black, black, black,
+    },
+    // 19° frame (linha azul continua)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, white, white, white, white,
+        blue,  blue,  blue,   blue,  blue,
+        black, black, black, black, black,
+    },
+    // 20° frame (linha azul continua)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, white, white, white, white,
+        blue,  blue,   blue,   blue,  blue,
+        blue, black, black, black, black,
+    },
+    // 21° frame (linha azul continua)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, white, white, white, white,
+        blue,   blue,   blue,   blue,  blue,
+        blue, blue, black, black, black,
+    },
+    // 22° frame (linha azul continua)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, white, white, white, white,
+        blue,   blue,   blue,   blue,  blue,
+        blue, blue, blue, black, black,
+    },
+    // 23° frame (linha azul continua)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, white, white, white, white,
+        blue,  blue,  blue,   blue,  blue,
+        blue, blue, blue, blue,  black,
+    },
+    // 24° frame (linha azul completa)
+    {
+        red,   red,   red,   red,   red,
+        red,   red,   red,   red,   red,
+        white, white, white, white, white,
+        blue,  blue,  blue,  blue,  blue,
+        blue,  blue,  blue,  blue,  blue,
+    },
+};
+for (uint i = 0; i < 19; i++)
+    {
+        draw_pio(frames[i], pio, sm, intensity);
+        sleep_ms(100);
+    }
+    draw_pio(frames[23], pio, sm, intensity);
+    play_tone(BUZZER_A, 261, 400); // Frequência de 261 Hz por 500 ms nota Dó
+    sleep_ms(80);
+    for (uint i = 0; i < 2; i++)
+    {
+    play_tone(BUZZER_A, 261, 180);
+    sleep_ms(60);
+    }
+    play_tone(BUZZER_A, 261, 250);
+    sleep_ms(100);
+    play_tone(BUZZER_A, 329, 300); // nota mi
+    sleep_ms(50);
+    play_tone(BUZZER_A, 261, 300);
+    sleep_ms(50);
+    play_tone(BUZZER_A, 392, 300); // nota sol
+    sleep_ms(50);
+    play_tone(BUZZER_A, 329, 300); // nota mi
+    sleep_ms(50);
+    play_tone(BUZZER_A, 261, 300);
+    sleep_ms(50);
+    play_tone(BUZZER_A, 392, 300); // nota 
+    sleep_ms(300);
+}
+
