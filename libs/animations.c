@@ -871,51 +871,51 @@ void formula1_semaphore(PIO pio, uint sm, float intensity) {
           
         // Frame 1: Primeira coluna vermelha.
         {
-            red, black, black, black, black,  // linha 1
-            black, black, black, black, red,  // linha 2  
-            red, black, black, black, black,  // linha 3
-            black, black, black, black, red,  // linha 4  
-            red, black, black, black, black   // linha 5
+            black, black, black, black, red,  // linha 1
+            red, black, black, black, black,  // linha 2  
+            black, black, black, black, red,  // linha 3
+            red, black, black, black, black,  // linha 4  
+            black, black, black, black, red   // linha 5
         },
         // Frame 2: Segunda coluna vermelha.
         {
-            red, red, black, black, black,    // linha 1
-            black, black, black, red, red,    // linha 2  
-            red, red, black, black, black,    // linha 3
-            black, black, black, red, red,    // linha 4  
-            red, red, black, black, black     // linha 5
+            black, black, black, red, red,      // linha 1
+            red, red, black, black, black,      // linha 2  
+            black, black, black, red, red,      // linha 3
+            red, red, black, black, black,      // linha 4  
+            black, black, black, red, red       // linha 5
         },
         // Frame 3: Terceira coluna vermelha.
         {
-            red, red, red, black, black,      // linha 1
-            black, black, red, red, red,      // linha 2  
-            red, red, red, black, black,      // linha 3
-            black, black, red, red, red,      // linha 4  
-            red, red, red, black, black       // linha 5
+            black, black, red, red, red,        // linha 1
+            red, red, red, black, black,        // linha 2  
+            black, black, red, red, red,        // linha 3
+            red, red, red, black, black,        // linha 4  
+            black, black, red, red, red         // linha 5
         },
         // Frame 4: Quarta coluna vermelha.
         {
-            red, red, red, red, black,        // linha 1
-            black, red, red, red, red,        // linha 2  
-            red, red, red, red, black,        // linha 3
-            black, red, red, red, red,        // linha 4  
-            red, red, red, red, black         // linha 5
+            black, red, red, red, red,          // linha 1
+            red, red, red, red, black,          // linha 2  
+            black, red, red, red, red,          // linha 3
+            red, red, red, red, black,          // linha 4  
+            black, red, red, red, red           // linha 5
         },
         // Frame 5: Quinta coluna vermelha.
         {
-            red, red, red, red, red,          // linha 1
-            red, red, red, red, red,          // linha 2  
-            red, red, red, red, red,          // linha 3
-            red, red, red, red, red,          // linha 4  
-            red, red, red, red, red           // linha 5
+            red, red, red, red, red,            // linha 1
+            red, red, red, red, red,            // linha 2  
+            red, red, red, red, red,            // linha 3
+            red, red, red, red, red,            // linha 4  
+            red, red, red, red, red             // linha 5
         },
         // Frame 6: Todos os LEDs verdes.
         {
-            green, green, green, green, green, // linha 1
-            green, green, green, green, green, // linha 2
-            green, green, green, green, green, // linha 3
-            green, green, green, green, green, // linha 4
-            green, green, green, green, green  // linha 5
+            green, green, green, green, green,  // linha 1
+            green, green, green, green, green,  // linha 2
+            green, green, green, green, green,  // linha 3
+            green, green, green, green, green,  // linha 4
+            green, green, green, green, green   // linha 5
         }
     };
 
