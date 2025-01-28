@@ -1032,15 +1032,16 @@ void tecla_B(PIO pio, uint sm, float intensity)
     }
 }
 
-
 // Função que gera a animação acendendo os LEDs vermelho de forma aleatorio para a Tarefa C
-void tecla_C(PIO pio, uint sm, float intensity) {
+void tecla_C(PIO pio, uint sm, float intensity)
+{
     frame frames;
     bool leds_status[25] = {false}; // Array para verificar quais LEDs estão acesos
     int leds_on = 0;                // Contador de LEDs acesos
 
     // Inicializa todos os LEDs como preto
-    for (int i = 0; i < 25; i++) {
+    for (int i = 0; i < 25; i++)
+    {
         frames[i] = black;
     }
 
@@ -1048,11 +1049,13 @@ void tecla_C(PIO pio, uint sm, float intensity) {
     srand(time(NULL));
 
     // Acende LEDs até que todos tenham sido ativados
-    while (leds_on < 25) {
+    while (leds_on < 25)
+    {
         int random_led = rand() % 25; // Escolhe um LED aleatório (0 a 24)
 
         // Se o LED ainda não estiver aceso, acende e atualiza o contador
-        if (!leds_status[random_led]) {
+        if (!leds_status[random_led])
+        {
             frames[random_led] = red;
             leds_status[random_led] = true; // Marca o LED como aceso
             leds_on++;                      // Incrementa o contador de LEDs acesos
@@ -1066,7 +1069,6 @@ void tecla_C(PIO pio, uint sm, float intensity) {
     sleep_ms(2000);
 }
 
-
 // Caso a tecla D seja acionada, todos os LEDs deverão ser ligados na cor verde, no nível de intensidade de 50% da luminosidade máxima.
 
 void tecla_D(PIO pio, uint sm, float intensity)
@@ -1076,8 +1078,7 @@ void tecla_D(PIO pio, uint sm, float intensity)
          verde, verde, verde, verde, verde,
          verde, verde, verde, verde, verde,
          verde, verde, verde, verde, verde,
-         verde, verde, verde, verde, verde}
-         };
+         verde, verde, verde, verde, verde}};
     // Exibição da animação
     for (int i = 0; i < 1; i++)
     {                                      // Exibe cada frame uma vez
@@ -1092,8 +1093,7 @@ void tecla_hash(PIO pio, uint sm, float intensity)
          branco, branco, branco, branco, branco,
          branco, branco, branco, branco, branco,
          branco, branco, branco, branco, branco,
-         branco, branco, branco, branco, branco}
-         };
+         branco, branco, branco, branco, branco}};
     // Exibição da animação
     for (int i = 0; i < 1; i++)
     {                                      // Exibe cada frame uma vez
@@ -1101,7 +1101,11 @@ void tecla_hash(PIO pio, uint sm, float intensity)
     }
 }
 
-
+void init_random_seed()
+{
+    // Usa um valor baseado no tempo do sistema
+    srand((unsigned)time(NULL)); // Para maior aleatoriedade, usando time(NULL) ao invés de time_us_64()
+}
 
 void formula1_semaphore(PIO pio, uint sm, float intensity)
 {
@@ -1110,35 +1114,35 @@ void formula1_semaphore(PIO pio, uint sm, float intensity)
 
         // Frame 1: Primeira coluna vermelha.
         {
-            black, black, black, black, red, // linha 1
-            red, black, black, black, black, // linha 2
-            black, black, black, black, red, // linha 3
-            red, black, black, black, black, // linha 4
-            black, black, black, black, red  // linha 5
+            red, black, black, black, black, // linha 1
+            black, black, black, black, red, // linha 2
+            red, black, black, black, black, // linha 3
+            black, black, black, black, red, // linha 4
+            red, black, black, black, black  // linha 5
         },
         // Frame 2: Segunda coluna vermelha.
         {
-            black, black, black, red, red, // linha 1
-            red, red, black, black, black, // linha 2
-            black, black, black, red, red, // linha 3
-            red, red, black, black, black, // linha 4
-            black, black, black, red, red  // linha 5
+            red, red, black, black, black, // linha 1
+            black, black, black, red, red, // linha 2
+            red, red, black, black, black, // linha 3
+            black, black, black, red, red, // linha 4
+            red, red, black, black, black  // linha 5
         },
         // Frame 3: Terceira coluna vermelha.
         {
-            black, black, red, red, red, // linha 1
-            red, red, red, black, black, // linha 2
-            black, black, red, red, red, // linha 3
-            red, red, red, black, black, // linha 4
-            black, black, red, red, red  // linha 5
+            red, red, red, black, black, // linha 1
+            black, black, red, red, red, // linha 2
+            red, red, red, black, black, // linha 3
+            black, black, red, red, red, // linha 4
+            red, red, red, black, black  // linha 5
         },
         // Frame 4: Quarta coluna vermelha.
         {
-            black, red, red, red, red, // linha 1
-            red, red, red, red, black, // linha 2
-            black, red, red, red, red, // linha 3
-            red, red, red, red, black, // linha 4
-            black, red, red, red, red  // linha 5
+            red, red, red, red, black, // linha 1
+            black, red, red, red, red, // linha 2
+            red, red, red, red, black, // linha 3
+            black, red, red, red, red, // linha 4
+            red, red, red, red, black  // linha 5
         },
         // Frame 5: Quinta coluna vermelha.
         {
@@ -1163,12 +1167,6 @@ void formula1_semaphore(PIO pio, uint sm, float intensity)
         draw_pio(frames[i], pio, sm, intensity);
         play_tone(BUZZER_A, 493, 200); // Nota B4, 200ms.
         sleep_ms(1000);                // Espera 1 segundo entre os frames.
-    }
-
-    void init_random_seed();
-    {
-        // Usa um valor baseado no tempo do sistema
-        srand((unsigned)time(NULL)); 
     }
 
     // Gera o delay aleatório entre 1 e 5 segundos
