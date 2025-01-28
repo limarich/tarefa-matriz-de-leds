@@ -1029,6 +1029,7 @@ void tecla_B(PIO pio, uint sm, float intensity)
     for (int i = 0; i < 1; i++)
     {                                      // Exibe cada frame uma vez
         draw_pio(frames[i], pio, sm, 1.0); // Mostra o frame atual
+        sleep_ms(1000);
     }
 }
 
@@ -1083,6 +1084,7 @@ void tecla_D(PIO pio, uint sm, float intensity)
     for (int i = 0; i < 1; i++)
     {                                      // Exibe cada frame uma vez
         draw_pio(frames[i], pio, sm, 0.5); // Mostra o frame atual
+        sleep_ms(1000);
     }
 }
 
@@ -1098,6 +1100,7 @@ void tecla_hash(PIO pio, uint sm, float intensity)
     for (int i = 0; i < 1; i++)
     {                                      // Exibe cada frame uma vez
         draw_pio(frames[i], pio, sm, 0.2); // Mostra o frame atual
+        sleep_ms(1000);
     }
 }
 
