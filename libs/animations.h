@@ -15,5 +15,6 @@ void draw_rocket_animation(PIO pio, uint sm, float intensity);
 void tecla_B(PIO pio, uint sm, float intensity);
 void formula1_semaphore(PIO pio, uint sm, float intensity);
 
+void bandeira(PIO pio, uint sm, float intensity);
 
 #endif
