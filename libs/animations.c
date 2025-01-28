@@ -20,6 +20,8 @@ const pixel yellow1 = {218, 195, 90};
 const pixel yellow2 = {241, 184, 30};
 const pixel yellow3 = {241, 174, 30};
 const pixel azul = {0, 0, 255};
+const pixel verde = {0, 255, 0};
+const pixel branco = {255, 255, 255};
 
 void reset_leds(PIO pio, uint sm)
 {
@@ -1065,6 +1067,42 @@ void tecla_C(PIO pio, uint sm, float intensity) {
 }
 
 
+// Caso a tecla D seja acionada, todos os LEDs deverão ser ligados na cor verde, no nível de intensidade de 50% da luminosidade máxima.
+
+void tecla_D(PIO pio, uint sm, float intensity)
+{
+    frame frames[1] = {
+        {verde, verde, verde, verde, verde,
+         verde, verde, verde, verde, verde,
+         verde, verde, verde, verde, verde,
+         verde, verde, verde, verde, verde,
+         verde, verde, verde, verde, verde}
+         };
+    // Exibição da animação
+    for (int i = 0; i < 1; i++)
+    {                                      // Exibe cada frame uma vez
+        draw_pio(frames[i], pio, sm, 0.5); // Mostra o frame atual
+    }
+}
+
+void tecla_hash(PIO pio, uint sm, float intensity)
+{
+    frame frames[1] = {
+        {branco, branco, branco, branco, branco,
+         branco, branco, branco, branco, branco,
+         branco, branco, branco, branco, branco,
+         branco, branco, branco, branco, branco,
+         branco, branco, branco, branco, branco}
+         };
+    // Exibição da animação
+    for (int i = 0; i < 1; i++)
+    {                                      // Exibe cada frame uma vez
+        draw_pio(frames[i], pio, sm, 0.2); // Mostra o frame atual
+    }
+}
+
+
+
 void formula1_semaphore(PIO pio, uint sm, float intensity)
 {
 
@@ -1127,7 +1165,7 @@ void formula1_semaphore(PIO pio, uint sm, float intensity)
         sleep_ms(1000);                // Espera 1 segundo entre os frames.
     }
 
-    void init_random_seed()
+    void init_random_seed();
     {
         // Usa um valor baseado no tempo do sistema
         srand((unsigned)time(NULL)); 

@@ -161,6 +161,17 @@ void select_action(char key)
         tecla_C(pio, sm, 0.8);
         sleep_ms(1000);
         break;
+    case 'D':
+        printf("Leds Verdes na Intensidade 50%\n");
+        tecla_D(pio, sm, 0.5);
+        sleep_ms(1000);
+        break;
+
+    case '#':
+        printf("Leds Brancos na Intensidade 20%\n");
+        tecla_hash(pio, sm, 0.2);
+        sleep_ms(1000);
+        break;
     case '*':
         printf("Encerrando o programa e entrando em modo de gravação\n");
         reset_usb_boot(0, 0);
