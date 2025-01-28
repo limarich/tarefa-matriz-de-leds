@@ -158,7 +158,7 @@ void select_action(char key)
         break;
     case 'C':
         printf("Leds Vermelhos na Intensidade 80%\n");
-        tecla_B(pio, sm, 0.8);
+        tecla_C(pio, sm, 0.8);
         sleep_ms(1000);
         break;
     case '*':
