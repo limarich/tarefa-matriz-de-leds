@@ -928,10 +928,10 @@ void formula1_semaphore(PIO pio, uint sm, float intensity) {
 
     void init_random_seed() {
         // Usa um valor baseado no tempo do sistema
-        srand((unsigned)time(NULL)); // Para maior aleatoriedade, usando time(NULL) ao invés de time_us_64()
+        srand((unsigned)time(NULL)); 
     }
 
-    // Gera o delay aleatório entre 1 e 3 segundos
+    // Gera o delay aleatório entre 1 e 5 segundos
     init_random_seed();
     int random_delay = rand() % 4001 + 1000; // Valores entre 1000 e 5000ms
     sleep_ms(random_delay);
