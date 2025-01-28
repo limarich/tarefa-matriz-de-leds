@@ -7,7 +7,7 @@
 const pixel black = {0, 0, 0};
 const pixel white = {213, 210, 210};
 const pixel green = {32, 216, 26};
-const pixel dark_green = {6, 80, 36};
+const pixel dark_green = {10, 200, 20};
 const pixel brown = {181, 68, 81};
 const pixel red = {252, 6, 6};
 const pixel roxo = {15, 0, 15};
@@ -791,158 +791,305 @@ void pacman(PIO pio, uint sm, float intensity)
     }
 }
 
-void draw_rocket_animation(PIO pio, uint sm, float intensity) {
+void draw_rocket_animation(PIO pio, uint sm, float intensity)
+{
     frame frames[8] = {
         // Frame 1: Foguete na base
-       {
-        black, yellow, orange, yellow, black,
-        black, gray, gray, gray, black,
-        black, white, blue, white, black,
-        black, black, white, black, black,
-        black, black, black, black, black,
-    },
-    // Frame 2 
-    {
-        black, red, red, red, black,
-        black, yellow, orange, yellow, black,
-        black, gray, gray, gray, black,
-        black, white, blue, white, black,
-        black, black, white, black, black,
-    },
-    // Frame 3 
-    {
-        black, black, black, black, black,
-        black, red, red, red, black,
-        black, yellow, orange, yellow, black,
-        black, gray, gray, gray, black,
-        black, white, blue, white, black,
-    },
-    // Frame 4 
-    {
-        black, black, white, black, black,
-        black, black, black, black, black,
-        black, red, red, red, black,
-        black, yellow, orange, yellow, black,
-        black, gray, gray, gray, black,
-    },
-    // Frame 5 
-    {
-        black, white, blue, white, black,
-        black, black, white, black, black,
-        black, black, black, black, black,
-        black, red, orange, red, black,
-        black, yellow, orange, yellow, black,
-    },
-    // Frame 6 
-    {
-        black, gray, gray, gray, black,
-        black, white, blue, white, black,
-        black, black, white, black, black,
-        black, black, black, black, black,
-        black, red, red, red, black,
-    },
-    // Frame 7
-    {
-        black, yellow, orange, yellow, black,
-        black, gray, gray, gray, black,
-        black, white, blue, white, black,
-        black, black, white, black, black,
-        black, black, black, black, black,
-    },
-};
+        {
+            black,
+            yellow,
+            orange,
+            yellow,
+            black,
+            black,
+            gray,
+            gray,
+            gray,
+            black,
+            black,
+            white,
+            blue,
+            white,
+            black,
+            black,
+            black,
+            white,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // Frame 2
+        {
+            black,
+            red,
+            red,
+            red,
+            black,
+            black,
+            yellow,
+            orange,
+            yellow,
+            black,
+            black,
+            gray,
+            gray,
+            gray,
+            black,
+            black,
+            white,
+            blue,
+            white,
+            black,
+            black,
+            black,
+            white,
+            black,
+            black,
+        },
+        // Frame 3
+        {
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            red,
+            red,
+            red,
+            black,
+            black,
+            yellow,
+            orange,
+            yellow,
+            black,
+            black,
+            gray,
+            gray,
+            gray,
+            black,
+            black,
+            white,
+            blue,
+            white,
+            black,
+        },
+        // Frame 4
+        {
+            black,
+            black,
+            white,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            red,
+            red,
+            red,
+            black,
+            black,
+            yellow,
+            orange,
+            yellow,
+            black,
+            black,
+            gray,
+            gray,
+            gray,
+            black,
+        },
+        // Frame 5
+        {
+            black,
+            white,
+            blue,
+            white,
+            black,
+            black,
+            black,
+            white,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            red,
+            orange,
+            red,
+            black,
+            black,
+            yellow,
+            orange,
+            yellow,
+            black,
+        },
+        // Frame 6
+        {
+            black,
+            gray,
+            gray,
+            gray,
+            black,
+            black,
+            white,
+            blue,
+            white,
+            black,
+            black,
+            black,
+            white,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            red,
+            red,
+            red,
+            black,
+        },
+        // Frame 7
+        {
+            black,
+            yellow,
+            orange,
+            yellow,
+            black,
+            black,
+            gray,
+            gray,
+            gray,
+            black,
+            black,
+            white,
+            blue,
+            white,
+            black,
+            black,
+            black,
+            white,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+    };
 
     // Exibição da animação
-    for (int i = 0; i < 7; i++) { // Exibe cada frame uma vez
+    for (int i = 0; i < 7; i++)
+    {                                            // Exibe cada frame uma vez
         draw_pio(frames[i], pio, sm, intensity); // Mostra o frame atual
-       
+
         // Sons simples que fazem sentido para um foguete
-        if (i < 4) {
+        if (i < 4)
+        {
             play_tone(BUZZER_A, 200 + i * 50, 300); // Sons crescentes durante a subida
-        } else if (i == 4 || i == 5) {
+        }
+        else if (i == 4 || i == 5)
+        {
             play_tone(BUZZER_A, 100, 300); // Sons graves para a chama
         }
-        
+
         sleep_ms(700); // Troca de frame a cada 700 ms
     }
 }
 
-
-void tecla_B(PIO pio, uint sm, float intensity){
+void tecla_B(PIO pio, uint sm, float intensity)
+{
     frame frames[1] = {
         {azul, azul, azul, azul, azul,
-        azul, azul, azul, azul, azul,
-        azul, azul, azul, azul, azul,
-        azul, azul, azul, azul, azul,
-        azul, azul, azul, azul, azul}
-    };
+         azul, azul, azul, azul, azul,
+         azul, azul, azul, azul, azul,
+         azul, azul, azul, azul, azul,
+         azul, azul, azul, azul, azul}};
     // Exibição da animação
-    for (int i = 0; i < 1; i++) { // Exibe cada frame uma vez
+    for (int i = 0; i < 1; i++)
+    {                                      // Exibe cada frame uma vez
         draw_pio(frames[i], pio, sm, 1.0); // Mostra o frame atual
     }
- }
+}
 
-void formula1_semaphore(PIO pio, uint sm, float intensity) {
+void formula1_semaphore(PIO pio, uint sm, float intensity)
+{
 
     frame frames[6] = {
-          
+
         // Frame 1: Primeira coluna vermelha.
         {
-            black, black, black, black, red,  // linha 1
-            red, black, black, black, black,  // linha 2  
-            black, black, black, black, red,  // linha 3
-            red, black, black, black, black,  // linha 4  
-            black, black, black, black, red   // linha 5
+            black, black, black, black, red, // linha 1
+            red, black, black, black, black, // linha 2
+            black, black, black, black, red, // linha 3
+            red, black, black, black, black, // linha 4
+            black, black, black, black, red  // linha 5
         },
         // Frame 2: Segunda coluna vermelha.
         {
-            black, black, black, red, red,      // linha 1
-            red, red, black, black, black,      // linha 2  
-            black, black, black, red, red,      // linha 3
-            red, red, black, black, black,      // linha 4  
-            black, black, black, red, red       // linha 5
+            black, black, black, red, red, // linha 1
+            red, red, black, black, black, // linha 2
+            black, black, black, red, red, // linha 3
+            red, red, black, black, black, // linha 4
+            black, black, black, red, red  // linha 5
         },
         // Frame 3: Terceira coluna vermelha.
         {
-            black, black, red, red, red,        // linha 1
-            red, red, red, black, black,        // linha 2  
-            black, black, red, red, red,        // linha 3
-            red, red, red, black, black,        // linha 4  
-            black, black, red, red, red         // linha 5
+            black, black, red, red, red, // linha 1
+            red, red, red, black, black, // linha 2
+            black, black, red, red, red, // linha 3
+            red, red, red, black, black, // linha 4
+            black, black, red, red, red  // linha 5
         },
         // Frame 4: Quarta coluna vermelha.
         {
-            black, red, red, red, red,          // linha 1
-            red, red, red, red, black,          // linha 2  
-            black, red, red, red, red,          // linha 3
-            red, red, red, red, black,          // linha 4  
-            black, red, red, red, red           // linha 5
+            black, red, red, red, red, // linha 1
+            red, red, red, red, black, // linha 2
+            black, red, red, red, red, // linha 3
+            red, red, red, red, black, // linha 4
+            black, red, red, red, red  // linha 5
         },
         // Frame 5: Quinta coluna vermelha.
         {
-            red, red, red, red, red,            // linha 1
-            red, red, red, red, red,            // linha 2  
-            red, red, red, red, red,            // linha 3
-            red, red, red, red, red,            // linha 4  
-            red, red, red, red, red             // linha 5
+            red, red, red, red, red, // linha 1
+            red, red, red, red, red, // linha 2
+            red, red, red, red, red, // linha 3
+            red, red, red, red, red, // linha 4
+            red, red, red, red, red  // linha 5
         },
         // Frame 6: Todos os LEDs verdes.
         {
-            green, green, green, green, green,  // linha 1
-            green, green, green, green, green,  // linha 2
-            green, green, green, green, green,  // linha 3
-            green, green, green, green, green,  // linha 4
-            green, green, green, green, green   // linha 5
-        }
-    };
+            green, green, green, green, green, // linha 1
+            green, green, green, green, green, // linha 2
+            green, green, green, green, green, // linha 3
+            green, green, green, green, green, // linha 4
+            green, green, green, green, green  // linha 5
+        }};
 
     // Mostra os frames de LEDs vermelhos sequencialmente.
-    for (uint i = 0; i < 5; i++) {
+    for (uint i = 0; i < 5; i++)
+    {
         draw_pio(frames[i], pio, sm, intensity);
         play_tone(BUZZER_A, 493, 200); // Nota B4, 200ms.
-        sleep_ms(1000); // Espera 1 segundo entre os frames.
+        sleep_ms(1000);                // Espera 1 segundo entre os frames.
     }
 
-    void init_random_seed() {
+    void init_random_seed()
+    {
         // Usa um valor baseado no tempo do sistema
         srand((unsigned)time(NULL)); // Para maior aleatoriedade, usando time(NULL) ao invés de time_us_64()
     }
@@ -952,9 +1099,8 @@ void formula1_semaphore(PIO pio, uint sm, float intensity) {
     int random_delay = rand() % 4001 + 1000; // Valores entre 1000 e 5000ms
     sleep_ms(random_delay);
 
-
     // Mostra o frame verde.
     draw_pio(frames[5], pio, sm, intensity);
     play_tone(BUZZER_A, 987, 700); // Nota B5, 700ms.
-    sleep_ms(1500); // Tempo aumentado para 1500ms.
+    sleep_ms(1500);                // Tempo aumentado para 1500ms.
 }
