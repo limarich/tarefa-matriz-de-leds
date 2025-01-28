@@ -1,5 +1,7 @@
 #include "animations.h"
 #include "keyboard.h"
+#include <stdlib.h>
+#include <time.h>
 // CORES PARA AS ANIMAÇÕES
 
 const pixel black = {0, 0, 0};
@@ -864,6 +866,7 @@ void draw_rocket_animation(PIO pio, uint sm, float intensity) {
     }
 }
 
+
 void tecla_B(PIO pio, uint sm, float intensity){
     frame frames[1] = {
         {azul, azul, azul, azul, azul,
@@ -876,4 +879,82 @@ void tecla_B(PIO pio, uint sm, float intensity){
     for (int i = 0; i < 1; i++) { // Exibe cada frame uma vez
         draw_pio(frames[i], pio, sm, 1.0); // Mostra o frame atual
     }
+ }
+
+void formula1_semaphore(PIO pio, uint sm, float intensity) {
+
+    frame frames[6] = {
+          
+        // Frame 1: Primeira coluna vermelha.
+        {
+            black, black, black, black, red,  // linha 1
+            red, black, black, black, black,  // linha 2  
+            black, black, black, black, red,  // linha 3
+            red, black, black, black, black,  // linha 4  
+            black, black, black, black, red   // linha 5
+        },
+        // Frame 2: Segunda coluna vermelha.
+        {
+            black, black, black, red, red,      // linha 1
+            red, red, black, black, black,      // linha 2  
+            black, black, black, red, red,      // linha 3
+            red, red, black, black, black,      // linha 4  
+            black, black, black, red, red       // linha 5
+        },
+        // Frame 3: Terceira coluna vermelha.
+        {
+            black, black, red, red, red,        // linha 1
+            red, red, red, black, black,        // linha 2  
+            black, black, red, red, red,        // linha 3
+            red, red, red, black, black,        // linha 4  
+            black, black, red, red, red         // linha 5
+        },
+        // Frame 4: Quarta coluna vermelha.
+        {
+            black, red, red, red, red,          // linha 1
+            red, red, red, red, black,          // linha 2  
+            black, red, red, red, red,          // linha 3
+            red, red, red, red, black,          // linha 4  
+            black, red, red, red, red           // linha 5
+        },
+        // Frame 5: Quinta coluna vermelha.
+        {
+            red, red, red, red, red,            // linha 1
+            red, red, red, red, red,            // linha 2  
+            red, red, red, red, red,            // linha 3
+            red, red, red, red, red,            // linha 4  
+            red, red, red, red, red             // linha 5
+        },
+        // Frame 6: Todos os LEDs verdes.
+        {
+            green, green, green, green, green,  // linha 1
+            green, green, green, green, green,  // linha 2
+            green, green, green, green, green,  // linha 3
+            green, green, green, green, green,  // linha 4
+            green, green, green, green, green   // linha 5
+        }
+    };
+
+    // Mostra os frames de LEDs vermelhos sequencialmente.
+    for (uint i = 0; i < 5; i++) {
+        draw_pio(frames[i], pio, sm, intensity);
+        play_tone(BUZZER_A, 493, 200); // Nota B4, 200ms.
+        sleep_ms(1000); // Espera 1 segundo entre os frames.
+    }
+
+    void init_random_seed() {
+        // Usa um valor baseado no tempo do sistema
+        srand((unsigned)time(NULL)); // Para maior aleatoriedade, usando time(NULL) ao invés de time_us_64()
+    }
+
+    // Gera o delay aleatório entre 1 e 3 segundos
+    init_random_seed();
+    int random_delay = rand() % 4001 + 1000; // Valores entre 1000 e 5000ms
+    sleep_ms(random_delay);
+
+
+    // Mostra o frame verde.
+    draw_pio(frames[5], pio, sm, intensity);
+    play_tone(BUZZER_A, 987, 700); // Nota B5, 700ms.
+    sleep_ms(1500); // Tempo aumentado para 1500ms.
 }

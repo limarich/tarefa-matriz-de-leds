@@ -135,6 +135,7 @@ void select_action(char key)
         break;
     case '5':
         printf("Animação 5 selecionada\n");
+        formula1_semaphore(pio, sm, intensity);
         break;
     case '6':
         printf("Animação 6 selecionada\n");
