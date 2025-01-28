@@ -23,6 +23,23 @@ const pixel azul = {0, 0, 255};
 const pixel verde = {0, 255, 0};
 const pixel branco = {255, 255, 255};
 
+void clear_leds(PIO pio, uint sm)
+{
+    frame black_frame;
+    // pinta todos os leds de preto
+    for (uint i = 0; i < PIXELS; i++)
+    {
+        black_frame[i] = black;
+    }
+
+    draw_pio(black_frame, pio, sm, 1);
+    // aviso sonoro que terminou de resetar;
+    sleep_ms(50);
+    play_tone(BUZZER_A, 1000, 100);
+    sleep_ms(50);
+    play_tone(BUZZER_A, 2000, 100);
+}
+
 void reset_leds(PIO pio, uint sm)
 {
 

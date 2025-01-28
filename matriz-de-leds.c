@@ -151,30 +151,39 @@ void select_action(char key)
     case '9':
         printf("Animação 9 selecionada\n");
         break;
+    case 'A':
+        clear_leds(pio, sm);
+        return;
+        break;
     case 'B':
         printf("Leds Azuis em 100\n");
         tecla_B(pio, sm, intensity);
         sleep_ms(1000);
+        return;
         break;
     case 'C':
         printf("Leds Vermelhos na Intensidade 80%\n");
         tecla_C(pio, sm, 0.8);
         sleep_ms(1000);
         break;
+        return;
     case 'D':
         printf("Leds Verdes na Intensidade 50%\n");
         tecla_D(pio, sm, 0.5);
         sleep_ms(1000);
         break;
+        return;
 
     case '#':
         printf("Leds Brancos na Intensidade 20%\n");
         tecla_hash(pio, sm, 0.2);
         sleep_ms(1000);
+        return;
         break;
     case '*':
         printf("Encerrando o programa e entrando em modo de gravação\n");
         reset_usb_boot(0, 0);
+        return;
         break;
     default:
         break;
