@@ -139,6 +139,7 @@ void select_action(char key)
         break;
     case '6':
         printf("Animação 6 selecionada\n");
+        animacaoSun_fun(pio, sm, intensity);
         break;
     case '7':
         printf("Animação 7 selecionada\n");

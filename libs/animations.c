@@ -15,6 +15,9 @@ const pixel orange = {255, 65, 0};
 const pixel blue = {65, 105, 225};
 const pixel yellow = {241, 255, 0};
 const pixel gray = {169, 169, 169};
+const pixel yellow1 = {218, 195, 90};
+const pixel yellow2 = {241, 184, 30};
+const pixel yellow3 = {241, 174, 30};
 const pixel azul = {0, 0, 255};
 
 void reset_leds(PIO pio, uint sm)
@@ -1105,204 +1108,812 @@ void formula1_semaphore(PIO pio, uint sm, float intensity)
     sleep_ms(1500);                // Tempo aumentado para 1500ms.
 }
 
+void animacaoSun_fun(PIO pio, uint sm, float intensity)
+{
+    frame frames[13] = {
+        // 1° Frame
+        {
+            black, black, black, black, black, // linha 1
+            black, black, black, black, black, // linha 2
+            black, black, black, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+        },
+        // 2°
+        {
+            black, black, black, black, black,   // linha 1
+            black, black, black, black, black,   // linha 2
+            black, black, yellow1, black, black, // linha 3
+            black, black, black, black, black,   // linha 4
+            black, black, black, black, black,   // linha 5
+        },
+        // 3°
+        {
+            black, black, black, black, black,       // linha 1
+            black, black, yellow2, black, black,     // linha 2
+            black, yellow2, yellow1, yellow2, black, // linha 3
+            black, black, yellow2, black, black,     // linha 4
+            black, black, black, black, black,       // linha 5
+        },
+        // 4°
+        {
+            black, black, yellow3, black, black,         // linha 1
+            black, black, yellow2, black, black,         // linha 2
+            yellow3, yellow2, yellow1, yellow2, yellow3, // linha 3
+            black, black, yellow2, black, black,         // linha 4
+            black, black, yellow3, black, black,         // linha 5
+        },
+        // 5°
+        {
+            black, black, black, black, black,       // linha 1
+            black, black, yellow2, black, black,     // linha 2
+            black, yellow2, yellow1, yellow2, black, // linha 3
+            black, black, yellow2, black, black,     // linha 4
+            black, black, black, black, black,       // linha 5
+        },
+
+        // 6°
+        {
+            black, black, black, black, black,   // linha 1
+            black, black, black, black, black,   // linha 2
+            black, black, yellow1, black, black, // linha 3
+            black, black, black, black, black,   // linha 4
+            black, black, black, black, black,   // linha 5
+
+        },
+        // 7°
+        {
+            black, black, black, black, black, // linha 1
+            black, black, black, black, black, // linha 2
+            black, black, black, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+
+        },
+        // 9°
+        {
+            black, black, black, black, black,   // linha 1
+            black, black, black, black, black,   // linha 2
+            black, black, yellow1, black, black, // linha 3
+            black, black, black, black, black,   // linha 4
+            black, black, black, black, black,   // linha 5
+        },
+        // 10°
+        {
+            black, black, black, black, black,       // linha 1
+            black, black, yellow2, black, black,     // linha 2
+            black, yellow2, yellow1, yellow2, black, // linha 3
+            black, black, yellow2, black, black,     // linha 4
+            black, black, black, black, black,       // linha 5
+        },
+        // 11°
+        {
+            black, black, yellow3, black, black,         // linha 1
+            black, black, yellow2, black, black,         // linha 2
+            yellow3, yellow2, yellow1, yellow2, yellow3, // linha 3
+            black, black, yellow2, black, black,         // linha 4
+            black, black, yellow3, black, black,         // linha 5
+        },
+        // 12°
+        {
+            black, black, black, black, black,       // linha 1
+            black, black, yellow2, black, black,     // linha 2
+            black, yellow2, yellow1, yellow2, black, // linha 3
+            black, black, yellow2, black, black,     // linha 4
+            black, black, black, black, black,       // linha 5
+        },
+
+        // 13°
+        {
+            black, black, black, black, black,   // linha 1
+            black, black, black, black, black,   // linha 2
+            black, black, yellow1, black, black, // linha 3
+            black, black, black, black, black,   // linha 4
+            black, black, black, black, black,   // linha 5
+
+        },
+        // 14°
+        {
+            black, black, black, black, black, // linha 1
+            black, black, black, black, black, // linha 2
+            black, black, black, black, black, // linha 3
+            black, black, black, black, black, // linha 4
+            black, black, black, black, black, // linha 5
+
+        }
+
+    };
+
+    for (uint i = 0; i < 13; i++)
+    {
+        draw_pio(frames[i], pio, sm, intensity);
+        if (i == 12)
+        {
+            play_tone(BUZZER_A, 440, 100);
+            sleep_ms(100);
+            play_tone(BUZZER_A, 553, 300);
+        }
+        sleep_ms(300);
+    }
+}
 
 void bandeira(PIO pio, uint sm, float intensity)
 {
     frame frames[24] = {
-    // 1° frame
-    {
-        red,   black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 2° frame
-    {
-        red,   red,   black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 3° frame
-    {
-        red,   red,   red,   black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 4° frame
-    {
-        red,   red,   red,   red,   black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 5° frame
-    {
-        red,   red,   red,   red,   red,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 6° frame
-    {
-        red,   red,   red,   red,   red,
-        red,   black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 7° frame
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 8° frame
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 9° frame
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 10° frame (linha vermelha completa)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        black, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 11° frame (linha branca começa)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, black, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 12° frame (linha branca continua)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, white, black, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 13° frame (linha branca continua)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, white, white, black, black,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 14° frame (linha branca completa)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, white, white, white, white,
-        black, black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 15° frame (linha azul começa)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, white, white, white, white,
-        blue,   black, black, black, black,
-        black, black, black, black, black,
-    },
-    // 16° frame (linha azul continua)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, white, white, white, white,
-        blue,  blue,  black, black, black,
-        black, black, black, black, black,
-    },
-    // 17° frame (linha azul continua)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, white, white, white, white,
-        blue,  blue,   blue,   black, black,
-        black, black, black, black, black,
-    },
-    // 18° frame (linha azul continua)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, white, white, white, white,
-        blue,   blue,   blue,   blue,  black,
-        black, black, black, black, black,
-    },
-    // 19° frame (linha azul continua)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, white, white, white, white,
-        blue,  blue,  blue,   blue,  blue,
-        black, black, black, black, black,
-    },
-    // 20° frame (linha azul continua)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, white, white, white, white,
-        blue,  blue,   blue,   blue,  blue,
-        blue, black, black, black, black,
-    },
-    // 21° frame (linha azul continua)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, white, white, white, white,
-        blue,   blue,   blue,   blue,  blue,
-        blue, blue, black, black, black,
-    },
-    // 22° frame (linha azul continua)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, white, white, white, white,
-        blue,   blue,   blue,   blue,  blue,
-        blue, blue, blue, black, black,
-    },
-    // 23° frame (linha azul continua)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, white, white, white, white,
-        blue,  blue,  blue,   blue,  blue,
-        blue, blue, blue, blue,  black,
-    },
-    // 24° frame (linha azul completa)
-    {
-        red,   red,   red,   red,   red,
-        red,   red,   red,   red,   red,
-        white, white, white, white, white,
-        blue,  blue,  blue,  blue,  blue,
-        blue,  blue,  blue,  blue,  blue,
-    },
-};
-for (uint i = 0; i < 19; i++)
+        // 1° frame
+        {
+            red,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 2° frame
+        {
+            red,
+            red,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 3° frame
+        {
+            red,
+            red,
+            red,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 4° frame
+        {
+            red,
+            red,
+            red,
+            red,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 5° frame
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 6° frame
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 7° frame
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 8° frame
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 9° frame
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 10° frame (linha vermelha completa)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 11° frame (linha branca começa)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 12° frame (linha branca continua)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            white,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 13° frame (linha branca continua)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            white,
+            white,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 14° frame (linha branca completa)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            white,
+            white,
+            white,
+            white,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 15° frame (linha azul começa)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            white,
+            white,
+            white,
+            white,
+            blue,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 16° frame (linha azul continua)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            white,
+            white,
+            white,
+            white,
+            blue,
+            blue,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 17° frame (linha azul continua)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            white,
+            white,
+            white,
+            white,
+            blue,
+            blue,
+            blue,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 18° frame (linha azul continua)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            white,
+            white,
+            white,
+            white,
+            blue,
+            blue,
+            blue,
+            blue,
+            black,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 19° frame (linha azul continua)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            white,
+            white,
+            white,
+            white,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            black,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 20° frame (linha azul continua)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            white,
+            white,
+            white,
+            white,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            black,
+            black,
+            black,
+            black,
+        },
+        // 21° frame (linha azul continua)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            white,
+            white,
+            white,
+            white,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            black,
+            black,
+            black,
+        },
+        // 22° frame (linha azul continua)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            white,
+            white,
+            white,
+            white,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            black,
+            black,
+        },
+        // 23° frame (linha azul continua)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            white,
+            white,
+            white,
+            white,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            black,
+        },
+        // 24° frame (linha azul completa)
+        {
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            red,
+            white,
+            white,
+            white,
+            white,
+            white,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+            blue,
+        },
+    };
+    for (uint i = 0; i < 19; i++)
     {
         draw_pio(frames[i], pio, sm, intensity);
         sleep_ms(100);
@@ -1312,8 +1923,8 @@ for (uint i = 0; i < 19; i++)
     sleep_ms(80);
     for (uint i = 0; i < 2; i++)
     {
-    play_tone(BUZZER_A, 261, 180);
-    sleep_ms(60);
+        play_tone(BUZZER_A, 261, 180);
+        sleep_ms(60);
     }
     play_tone(BUZZER_A, 261, 250);
     sleep_ms(100);
@@ -1327,7 +1938,6 @@ for (uint i = 0; i < 19; i++)
     sleep_ms(50);
     play_tone(BUZZER_A, 261, 300);
     sleep_ms(50);
-    play_tone(BUZZER_A, 392, 300); // nota 
+    play_tone(BUZZER_A, 392, 300); // nota
     sleep_ms(300);
 }
-
