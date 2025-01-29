@@ -213,3 +213,16 @@ Esta função reproduz uma animação de um contador regressivo, usando LEDs RGB
 #### **Conclusão**:
 Ao ser selecionado a animação executa a animação de um contador regressivo utilizando os LEDs RGB. Além de controlar os LEDs gerando os números em sequência, a função também ativa o buzzer para gerar um efeito sonoro correspondente à animação.
 
+
+
+
+## Vídeo
+
+Para o projeto em questão o vídeo demnstrativo pode ser visto no link: https://youtu.be/d6YAhhLO2kQ, ou se não conseguir pode ser encontrado nesse link: https://www.dropbox.com/scl/fi/feq001nv0w1o5d0e5wue2/2025-01-28-23-19-15.mkv?rlkey=mtxzsiusq1ikgtuhdcfct5byo&st=3hsdi4l5&dl=0.
+
+
+# Créditos
+
+Desenvolvido pelo Grupo 2, Subgrupo 4, como parte do estudo e prática de microcontroladores com a arquitetura RP2040.
+
+Atividade prática do projeto **EmbarcaTech**.
